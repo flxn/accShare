@@ -1,0 +1,139 @@
+<html>
+
+<head>
+  <title>accShare | Share logins with everyone</title>
+  <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+  <link rel="stylesheet" href="stylesheets/style.css">
+  <script src="//cdnjs.cloudflare.com/ajax/libs/angular.js/1.2.20/angular.min.js"></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/angular.js/1.2.20/angular-cookies.min.js"></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/angular.js/1.2.20/angular-sanitize.min.js"></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/angular-ui-bootstrap/0.11.2/ui-bootstrap.min.js"></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/angular-ui-bootstrap/0.11.2/ui-bootstrap-tpls.min.js"></script>
+  <script src="javascripts/app.js"></script>
+  <script src="javascripts/site.js"></script>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+</head>
+
+<body ng-app="accShare" ng-controller="MainCtrl">
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-md-2 col-sm-3 hidden-xs">
+        <div class="card searchcard infocard" tooltip="Accounts available" tooltip-trigger="mouseenter" tooltip-placement="bottom">
+          <div>
+            <span class="glyphicon glyphicon-hdd"></span> {{count}}
+          </div>
+        </div>
+      </div>
+      <div class="col-md-8 col-sm-6 col-xs-8">
+        <div class="card searchcard">
+          <input class="searchbox" type="text" placeholder="Search for a site" ng-model="searchString" ng-bind-html="searchString" ng-keyup="clearAlert(); $event.keyCode == 13 && getAccounts(searchString)" autofocus>
+        </div>
+      </div>
+      <div class="col-md-2 col-sm-3 col-xs-4">
+
+        <div class="card searchcard addcard" ng-click="showForm()">
+          <span class="glyphicon glyphicon-plus"></span> Add
+        </div>
+      </div>
+    </div>
+    <div class="row">
+
+      <div class="cards col-md-8 col-md-offset-2 col-sm-12 col-xs-12">
+        <div class="alert alert-{{alert.type}}" role="alert" style="margin: 20px 0 -10px 0;" ng-if="alert.msg">{{alert.msg}}</div>
+        <div class="card accountcard op-{{account.downvotes}}" ng-repeat="account in accounts">
+
+          <div class="header">
+            <img src="{{account.favicon}}" alt="" class="favicon">
+            <div class="site">{{account.site}}</div>
+            <div class="added">{{account.added}}</div>
+            <div class="downvotes dvcolor-{{account.downvotes}}">
+              {{account.downvotes}}
+              <span class="glyphicon glyphicon-remove-circle icon-downvote white" ng-click="downvote(account._id); getAccounts(searchString);"></span>
+            </div>
+          </div>
+
+          <div class="details">
+            <span class="glyphicon glyphicon-user"></span>
+            <input class="user" value="{{account.user}}" onclick="this.select()" readonly>
+
+            <br>
+            <span class="glyphicon glyphicon-asterisk"></span>
+            <input class="password" value="{{account.password}}" onclick="this.select()" readonly>
+          </div>
+        </div>
+
+      </div>
+
+
+    </div>
+    <div class="row">
+        <div class="card col-md-8 col-md-offset-2 col-sm-12 col-xs-12 introtext">
+            <h1>About AccShare</h1>
+            <h2>What?</h2>
+            <p>AccShare is a service to share Account informations with the rest of the world.</p>
+            <h2>Why?</h2>
+            <p>The internet is full of login forms. Nowadays, almost every site requires you to register. No matter if you just want to test it out, view an attachment on a forum or get access to some content you need.</p>
+            <p>In my opinion <strong>that's annoying</strong>.</p>
+            <p>I don't want to give out my name, birthday and email address to some random website owner I don't know and you probably won't either... but sadly it's necessary.</p>
+            <h2>How?</h2>
+            <p>AccShare tries to solve this problem by providing a platform to share fake login informations.</p>
+            <p>The site relies heavily on an active community to reach it's goal of a hassel free internet but it's super easy to participate:</p>
+            <p>If there are no credentials for a site you need create a fake account and add it to AccShare to help others<br>(But please comply with the Terms Of Use when doing so). <br>A small step for you a <strike>huge</strike> slightly bigger leap for an open internet.</p>
+            <p>When you like this idea please spread this site. The more people participate the better.</p>
+        </div>
+    </div>
+  </div>
+  <!--
+      <footer>
+          <div class="container">
+              <div class="col-md-12">
+                  Footer
+              </div>
+          </div>
+
+      </div>
+  -->
+  <div class="darkenscreen" ng-if="darkenScreen" ng-click="hideForm()"></div>
+  <div class="card accountcard centered" style="height: 180px; width: 300px;" ng-if="showAddForm">
+
+    <div class="header">
+      <span class="glyphicon glyphicon-plus favicon hover-white" ng-click="addAccount(url, username, password)" tooltip="Save the login credentials" tooltip-trigger="mouseenter" tooltip-placement="bottom"></span>
+      <div class="site">Add a new Account</div>
+      <div class="added">{{currentDate}}</div>
+      <img class="loader" src="images/gif-load.gif" ng-if="showLoader">
+    </div>
+
+    <div class="details">
+      <span class="glyphicon glyphicon-globe"></span>
+      <span class="site">
+              <input type="text" placeholder="URL" ng-model="$parent.url" ng-bind-html="$parent.url" tooltip="The URL or the name of the site." tooltip-trigger="focus" tooltip-placement="bottom">
+          </span>
+      <br>
+      <span class="glyphicon glyphicon-user"></span>
+      <span class="user">
+              <input type="text" placeholder="Username" ng-model="username" ng-bind-html="username">
+          </span>
+      <br>
+      <span class="glyphicon glyphicon-asterisk"></span>
+      <span class="password">
+              <input type="text" placeholder="Password" ng-model="password" ng-bind-html="password">
+          </span>
+
+    </div>
+  </div>
+  <div class="card accountcard termsofuse centered" ng-if="showTermsOfUse">
+    <div class="header">
+      <span class="glyphicon glyphicon-ok favicon hover-white" ng-click="agreeTOU()" tooltip="Accept the Terms Of Use" tooltip-trigger="mouseenter" tooltip-placement="bottom"></span>
+      <div class="site">Terms Of Use</div>
+      <div class="added">This agreement is only shown once.</div>
+    </div>
+    <div class="content">
+      <p>You will not share any account informations of sites/services that do not allow such activity.</p>
+      <p>You will only share account informations that you have ownership of and that you are permitted to share.</p>
+      <p>You assign the copyright of every information you add to accShare.</p>
+      <p>We are not responsible for termination of accounts that are shared on this site.</p>
+    </div>
+  </div>
+</body>
+
+</html>

@@ -1,0 +1,248 @@
+body {
+    background: #f3f3f3;
+    color: #111;
+}
+
+
+.op-0 { opacity: 1; }
+
+.op-1, .op-2 { opacity: 0.9; }
+.op-3, .op-4 { opacity: 0.8; }
+.op-5, .op-6 { opacity: 0.7; }
+.op-7, .op-8 { opacity: 0.6; }
+.op-9, .op-10 { opacity: 0.5; }
+.op-11, .op-12 { opacity: 0.4; }
+.op-13, .op-14 { opacity: 0.3; }
+.op-15, .op-16 { opacity: 0.2; }
+.op-17, .op-18, .op-19 { opacity: 0.1; }
+.op-20 { display: none; }
+
+.searchcard {
+    background: #fff;
+    height: 100px;
+    margin-top: 75px;
+    width: 100%;
+}
+
+.searchcard .searchbox {
+    width: 60%;
+    font-size: 2em;
+    margin-top: 30px;
+    margin-left: 20%;
+    padding: 0 10px 0 10px;
+    text-align: center;
+    background: #FAFAFA;
+    border-bottom: 2px solid #009688;
+}
+
+input {
+    background: #FAFAFA;
+    border: 0;
+    border-bottom: 1px solid #009688;
+}
+
+input:focus {
+    outline: 0;
+    border-color: #00bfa5;
+}
+
+.white, .white a {
+  color: #fff;
+}
+
+.card {
+    float: left;
+    border-radius: 2px;
+    /* chip bg: */
+    background: #FAFAFA;
+    /* Sketch doesnt export gradient borders at this point */
+    /* Sketch doesnt export gradient borders at this point */
+    -moz-box-shadow:    0 0px 2px 0px rgba(0,0,0,0.12), 0px 2px 2px 0px rgba(0,0,0,0.24);
+    box-shadow:         0 0px 2px 0px rgba(0,0,0,0.12), 0px 2px 2px 0px rgba(0,0,0,0.24);
+}
+
+.accountcard {
+    font-family: Roboto-Regular;
+    font-size: 14px;
+    color: rgba(0,0,0,0.55);
+    line-height: 20px;
+    width: 40%;
+    min-width: 250px;
+    height: 150px;
+    margin-top: 25px;
+    margin-left: 5%;
+    margin-right: 4%;
+}
+
+.accountcard:last-child {
+    margin-bottom: 20px;
+}
+
+.accountcard .header {
+    border-top-left-radius: 2px;
+    border-top-right-radius: 2px;
+    position: relative;
+    left: 0;
+    top: 0;
+    /* header bg: */
+    background: #009688;
+    height: 63px;
+    width: 100%;
+}
+
+.accountcard .header .favicon {
+    float: left;
+    width: 40px;
+    height: 40px;
+    border-radius: 100%;
+    margin-top:11px;
+    margin-left: 10px;
+    font-size: 2.5em;
+}
+
+.accountcard .header .site {
+    position: relative;
+    font-family: Roboto-Regular;
+    font-size: 16px;
+    color: #FFFFFF;
+    line-height: 24px;
+    padding-top: 9px;
+    margin-left: 60px;
+}
+
+.accountcard .header .added {
+    position: relative;
+    font-family: Roboto-Regular;
+    font-size: 14px;
+    color: rgba(255,255,255,0.70);
+    line-height: 20px;
+    margin-left: 60px;
+}
+
+.accountcard .header .downvotes {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    font-family: Roboto-Regular;
+    font-size: 16px;
+    color: #fff;
+    line-height: 16px;
+    margin-left: 60px;
+}
+
+.icon-downvote {
+    font-size: 14px;
+    transition: color 0.1s;
+}
+
+.icon-downvote:hover {
+    color: #f36c60;
+}
+
+.dvcolor-0 {
+    color: rgba(255,255,255,0.70) !important;
+}
+
+.accountcard .details {
+    margin-top: 12px;
+    margin-left: 10px;
+}
+
+.accountcard .details span {
+    line-height: 18px;
+    margin-left: 3px;
+    margin-top: 7px;
+}
+
+.accountcard .details input {
+    font-size: 18px;
+    width: 80%;
+}
+
+.addcard {
+    line-height: 100px;
+    text-align: center;
+    font-size: 1.5em;
+    color: #009688;
+    transition: all 0.2s;
+}
+
+.infocard {
+    line-height: 100px;
+    text-align: center;
+    font-size: 2.5em;
+    color: #009688;
+    transition: all 0.2s;
+}
+
+.termsofuse {
+    width: 50% !important;
+    height: inherit !important;
+}
+
+.termsofuse .content {
+    padding: 10px;
+}
+
+.addcard .glyphicon-plus {
+    transition: color 0.2s;
+    transition: transform 0.6s;
+}
+
+.addcard:hover {
+    background: #009688;
+    color: #fff;
+    cursor: pointer;
+}
+
+.addcard:hover > .glyphicon-plus {
+    transform: rotate(90deg);
+}
+
+.hover-white {
+    transition: color 0.2s;
+}
+
+.hover-white:hover {
+    color: #fff;
+}
+
+footer {
+    margin-top: 25px;
+    height: 50px;
+    line-height: 50px;
+    background: rgba(100, 100, 100, 0.1);
+}
+
+.centered {
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      -webkit-transform: translate(-50%, -50%);
+      -moz-transform: translate(-50%, -50%);
+      z-index: 1000;
+      margin: 0 !important;
+}
+
+.darkenscreen {
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 999;
+}
+
+.introtext {
+    margin-top: 20px;
+    margin-bottom: 30px;
+}
+
+.loader {
+    position: absolute;
+    font-size: 2.5em;
+    top: 10px;
+    right: 10px;
+}
