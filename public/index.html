@@ -1,6 +1,7 @@
 <html>
 
 <head>
+  <link href='http://fonts.googleapis.com/css?family=Roboto' rel='stylesheet' type='text/css'>
   <title>accShare | Share logins with everyone</title>
   <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
   <link rel="stylesheet" href="stylesheets/style.css">
@@ -104,21 +105,25 @@
     </div>
 
     <div class="details">
-      <span class="glyphicon glyphicon-globe"></span>
-      <span class="site">
-              <input type="text" placeholder="URL" ng-model="$parent.url" ng-bind-html="$parent.url" tooltip="The URL or the name of the site." tooltip-trigger="focus" tooltip-placement="bottom">
-          </span>
-      <br>
-      <span class="glyphicon glyphicon-user"></span>
-      <span class="user">
-              <input type="text" placeholder="Username" ng-model="username" ng-bind-html="username">
-          </span>
-      <br>
-      <span class="glyphicon glyphicon-asterisk"></span>
-      <span class="password">
-              <input type="text" placeholder="Password" ng-model="password" ng-bind-html="password">
-          </span>
 
+      <div class="site">
+          <span class="glyphicon glyphicon-globe"></span>
+              <input type="text" placeholder="URL" ng-model="$parent.url" ng-bind-html="$parent.url" tooltip="The URL or the name of the site." tooltip-trigger="focus" tooltip-placement="bottom">
+          </div>
+
+      <div class="user">
+          <span class="glyphicon glyphicon-user"></span>
+              <input type="text" placeholder="Username" ng-model="username" ng-bind-html="username">
+          </div>
+
+
+      <div class="password">
+          <span class="glyphicon glyphicon-asterisk"></span>
+              <input type="text" placeholder="Password" ng-model="password" ng-bind-html="password">
+          </div>
+        <div class="captcha">
+            <span class="captchaquestion">What is the answer of \[\frac{6}{2}+1\]</span>
+        </div>
     </div>
   </div>
   <div class="card accountcard termsofuse centered" ng-if="showTermsOfUse">

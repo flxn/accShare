@@ -1,8 +1,13 @@
-body {
-    background: #f3f3f3;
-    color: #111;
+html {
+    font-size: 62.5%;
 }
 
+body {
+    font-family: 'Roboto-Regular', 'Helvetica', 'Arial', sans-serif;
+    background: #f1f1f1;
+    color: #111;
+    font-size: 1.6rem;
+}
 
 .op-0 { opacity: 1; }
 
@@ -22,11 +27,11 @@ body {
     height: 100px;
     margin-top: 75px;
     width: 100%;
+    font-size: 2.5rem;
 }
 
 .searchcard .searchbox {
     width: 60%;
-    font-size: 2em;
     margin-top: 30px;
     margin-left: 20%;
     padding: 0 10px 0 10px;
@@ -62,8 +67,6 @@ input:focus {
 }
 
 .accountcard {
-    font-family: Roboto-Regular;
-    font-size: 14px;
     color: rgba(0,0,0,0.55);
     line-height: 20px;
     width: 40%;
@@ -97,13 +100,10 @@ input:focus {
     border-radius: 100%;
     margin-top:11px;
     margin-left: 10px;
-    font-size: 2.5em;
 }
 
 .accountcard .header .site {
     position: relative;
-    font-family: Roboto-Regular;
-    font-size: 16px;
     color: #FFFFFF;
     line-height: 24px;
     padding-top: 9px;
@@ -112,8 +112,6 @@ input:focus {
 
 .accountcard .header .added {
     position: relative;
-    font-family: Roboto-Regular;
-    font-size: 14px;
     color: rgba(255,255,255,0.70);
     line-height: 20px;
     margin-left: 60px;
@@ -123,15 +121,12 @@ input:focus {
     position: absolute;
     top: 10px;
     right: 10px;
-    font-family: Roboto-Regular;
-    font-size: 16px;
     color: #fff;
     line-height: 16px;
     margin-left: 60px;
 }
 
 .icon-downvote {
-    font-size: 14px;
     transition: color 0.1s;
 }
 
@@ -155,14 +150,12 @@ input:focus {
 }
 
 .accountcard .details input {
-    font-size: 18px;
     width: 80%;
 }
 
 .addcard {
     line-height: 100px;
     text-align: center;
-    font-size: 1.5em;
     color: #009688;
     transition: all 0.2s;
 }
@@ -170,7 +163,6 @@ input:focus {
 .infocard {
     line-height: 100px;
     text-align: center;
-    font-size: 2.5em;
     color: #009688;
     transition: all 0.2s;
 }
@@ -242,7 +234,6 @@ footer {
 
 .loader {
     position: absolute;
-    font-size: 2.5em;
     top: 10px;
     right: 10px;
 }
