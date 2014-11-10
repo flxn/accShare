@@ -51,7 +51,8 @@ namespace.controller('MainCtrl', ['$scope', '$http', '$cookies', function($scope
         msg += missing.join(', ');
 
         if(missing.length != 0) {
-            $scope.alert = { msg: msg, type: "warning" };
+            $scope.addAlert = { msg: msg, type: "warning" };
+            $scope.showLoader = false;
             return;
         }
 
