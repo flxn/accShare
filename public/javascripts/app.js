@@ -62,6 +62,8 @@ namespace.controller('MainCtrl', ['$scope', '$http', '$cookies', function($scope
             $scope.hideForm();
             $scope.showLoader = false;
         });
+
+
     };
 
     $scope.getCount = function() {

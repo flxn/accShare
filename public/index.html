@@ -4,29 +4,33 @@
   <link href='http://fonts.googleapis.com/css?family=Roboto' rel='stylesheet' type='text/css'>
   <title>accShare | Share logins with everyone</title>
   <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+  <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
   <link rel="stylesheet" href="stylesheets/style.css">
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
 </head>
 
 <body ng-app="accShare" ng-controller="MainCtrl">
+  <div class="siteheader">
+    <span class="sitename">AccShare</span>
+</div>
   <div class="container-fluid">
     <div class="row">
       <div class="col-md-2 col-sm-3 hidden-xs">
         <div class="card searchcard infocard" tooltip="Accounts available" tooltip-trigger="mouseenter" tooltip-placement="bottom">
           <div>
-            <span class="glyphicon glyphicon-hdd"></span> {{count}}
+            <span class="fa fa-database"></span> {{count}}
           </div>
         </div>
       </div>
-      <div class="col-md-8 col-sm-6 col-xs-8">
+      <div class="col-md-8 col-sm-6 col-xs-12">
         <div class="card searchcard">
           <input class="searchbox" type="text" placeholder="Search for a site" ng-model="searchString" ng-bind-html="searchString" ng-keyup="clearAlert(); $event.keyCode == 13 && getAccounts(searchString)" autofocus>
         </div>
       </div>
-      <div class="col-md-2 col-sm-3 col-xs-4">
+      <div class="col-md-2 col-sm-3 hidden-xs">
 
         <div class="card searchcard addcard" ng-click="showForm()">
-          <span class="glyphicon glyphicon-plus"></span> Add
+          <span class="fa fa-plus"></span> Add
         </div>
       </div>
     </div>
@@ -42,41 +46,54 @@
             <div class="added">{{account.added}}</div>
             <div class="downvotes dvcolor-{{account.downvotes}}">
               {{account.downvotes}}
-              <span class="glyphicon glyphicon-remove-circle icon-downvote white" ng-click="downvote(account._id); getAccounts(searchString);" tooltip="Downvote this account."></span>
+              <span class="fa fa-thumbs-down icon-downvote white" ng-click="downvote(account._id); getAccounts(searchString);" tooltip="Downvote this account."></span>
             </div>
           </div>
 
           <div class="details">
-            <span class="glyphicon glyphicon-user"></span>
+            <span class="fa fa-user"></span>
             <input class="user" value="{{account.user}}" onclick="this.select()" readonly>
 
             <br>
-            <span class="glyphicon glyphicon-asterisk"></span>
+            <span class="fa fa-asterisk"></span>
             <input class="password" value="{{account.password}}" onclick="this.select()" readonly>
           </div>
         </div>
 
       </div>
+      <div class="hidden-lg hidden-md hidden-sm col-xs-12">
 
+        <div class="card searchcard addcard" ng-click="showForm()">
+          <span class="fa fa-plus"></span> Add
+        </div>
+      </div>
 
     </div>
     <div class="row">
-        <div class="card col-md-8 col-md-offset-2 col-sm-12 col-xs-12 introtext">
-            <h1>About AccShare</h1>
-            <h2>What?</h2>
-            <p>AccShare is a service to share Account informations with the rest of the world.</p>
-            <h2>Why?</h2>
-            <p>The internet is full of login forms. Nowadays, almost every site requires you to register. No matter if you just want to test it out, view an attachment on a forum or get access to some content you need.</p>
-            <p>In my opinion <strong>that's annoying</strong>.</p>
-            <p>I don't want to give out my name, birthday and email address to some random website owner I don't know and you probably won't either... but sadly it's necessary.</p>
-            <h2>How?</h2>
-            <p>AccShare tries to solve this problem by providing a platform to share fake login informations.</p>
-            <p>The site relies heavily on an active community to reach it's goal of a hassel free internet but it's super easy to participate:</p>
-            <p>If there are no credentials for a site you need create a fake account and add it to AccShare to help others<br>(But please comply with the Terms Of Use when doing so). <br>A small step for you a <strike>huge</strike> slightly bigger leap for an open internet.</p>
-            <p>When you like this idea please spread this site. The more people participate the better.</p>
-        </div>
+      <div class="card col-md-8 col-md-offset-2 col-sm-12 col-xs-12 introtext">
+        <h1>About AccShare</h1>
+        <h2>What?</h2>
+        <p>AccShare is a service to share Account informations with the rest of the world.</p>
+        <h2>Why?</h2>
+        <p>The internet is full of login forms. Nowadays, almost every site requires you to register. No matter if you just want to test it out, view an attachment on a forum or get access to some content you need.</p>
+        <p>In my opinion <strong>that's annoying</strong>.</p>
+        <p>I don't want to give out my name, birthday and email address to some random website owner I don't know and you probably won't either... but sadly it's necessary.</p>
+        <h2>How?</h2>
+        <p>AccShare tries to solve this problem by providing a platform to share fake login informations.</p>
+        <p>The site relies heavily on an active community to reach it's goal of a hassel free internet but it's super easy to participate:</p>
+        <p>If there are no credentials for a site you need create a fake account and add it to AccShare to help others
+          <br>(But please comply with the Terms Of Use when doing so).
+          <br>A small step for you a <strike>huge</strike> slightly bigger leap for an open internet.</p>
+        <p>When you like this idea please spread this site. The more people participate the better.</p>
+      </div>
     </div>
   </div>
+
+  <div class="sitefooter">
+    <a href="http://flxn.de">flxn.de</a> |
+    <i class="fa fa-btc"></i> 1HJXdMmYnmcbGBUJnMGpKuBiuWrxKeut6u <i class="fa fa-paypal"></i> <a href="paypal.com">Donate</a> |
+    <i class="fa fa-facebook"></i> <i class="fa fa-twitter"></i> <i class="fa fa-google-plus"></i>
+</div>
   <!--
       <footer>
           <div class="container">
@@ -91,7 +108,7 @@
   <div class="card accountcard centered" style="height: 180px; width: 300px;" ng-if="showAddForm">
 
     <div class="header">
-      <span class="glyphicon glyphicon-plus favicon hover-white" ng-click="addAccount(url, username, password)" tooltip="Save the login credentials" tooltip-trigger="mouseenter" tooltip-placement="bottom"></span>
+      <span class="fa fa-plus favicon hover-white" ng-click="addAccount(url, username, password)" tooltip="Save the login credentials" tooltip-trigger="mouseenter" tooltip-placement="bottom"></span>
       <div class="site">Add a new Account</div>
       <div class="added">{{currentDate}}</div>
       <img class="loader" src="images/gif-load.gif" ng-if="showLoader">
@@ -99,25 +116,25 @@
 
     <div class="details">
       <div class="site">
-          <span class="glyphicon glyphicon-globe"></span>
-              <input type="text" placeholder="URL" ng-model="$parent.url" ng-bind-html="$parent.url" tooltip="The URL or the name of the site." tooltip-trigger="focus" tooltip-placement="bottom">
-          </div>
+        <span class="fa fa-globe"></span>
+        <input type="text" placeholder="URL" ng-model="$parent.url" ng-bind-html="$parent.url" tooltip="The URL or the name of the site." tooltip-trigger="focus" tooltip-placement="bottom">
+      </div>
 
       <div class="user">
-          <span class="glyphicon glyphicon-user"></span>
-              <input type="text" placeholder="Username" ng-model="username" ng-bind-html="username">
-          </div>
+        <span class="fa fa-user"></span>
+        <input type="text" placeholder="Username" ng-model="username" ng-bind-html="username">
+      </div>
 
 
       <div class="password">
-          <span class="glyphicon glyphicon-asterisk"></span>
-              <input type="text" placeholder="Password" ng-model="password" ng-bind-html="password">
-          </div>
+        <span class="fa fa-asterisk"></span>
+        <input type="text" placeholder="Password" ng-model="password" ng-bind-html="password">
+      </div>
     </div>
   </div>
   <div class="card accountcard termsofuse centered" ng-if="showTermsOfUse">
     <div class="header">
-      <span class="glyphicon glyphicon-ok favicon hover-white" ng-click="agreeTOU()" tooltip="Accept the Terms Of Use" tooltip-trigger="mouseenter" tooltip-placement="bottom"></span>
+      <span class="fa fa-check favicon hover-white" ng-click="agreeTOU()" tooltip="Accept the Terms Of Use" tooltip-trigger="mouseenter" tooltip-placement="bottom"></span>
       <div class="site">Terms Of Use</div>
       <div class="added">This agreement is only shown once.</div>
     </div>
