@@ -13,6 +13,28 @@ a {
     text-decoration: underline;
 }
 
+button{
+    background: #2ecc72;
+    border: 0;
+    color: #fff;
+}
+
+.addbutton {
+    width: 250px;
+    margin-top: 15px;
+    margin-left: 15px;
+    outline: 0;
+}
+
+.addbutton:hover {
+    box-shadow: 0 1px 5px rgba(0,0,0,0.16), 0 1px 3px rgba(0,0,0,0.28);
+}
+
+.addbutton:active {
+
+    background: #00BCD4;
+}
+
 .siteheader {
     top:0;
     left:0;
@@ -22,9 +44,11 @@ a {
     margin-bottom: 10px;
     line-height: 50px;
     color: #FFF;
+    cursor: pointer;
+}
 
-    -moz-box-shadow: 0 0px 2px 0px rgba(0, 0, 0, 0.12), 0px 2px 2px 0px rgba(0, 0, 0, 0.24);
-    box-shadow: 0 0px 2px 0px rgba(0, 0, 0, 0.12), 0px 2px 2px 0px rgba(0, 0, 0, 0.24);
+.shadow {
+    box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
 }
 
 .sitefooter {
@@ -36,8 +60,6 @@ a {
     font-size: 1.5rem;
     color: #FFF;
     text-align: center;
-    -moz-box-shadow: 0 0px 2px 0px rgba(0, 0, 0, 0.12), 0px 2px 2px 0px rgba(0, 0, 0, 0.24);
-    box-shadow: 0 0px 2px 0px rgba(0, 0, 0, 0.12), 0px 2px 2px 0px rgba(0, 0, 0, 0.24);
 }
 
 .sitename {
@@ -123,18 +145,14 @@ input:focus {
   /* chip bg: */
 
   background: #FAFAFA;
-  /* Sketch doesnt export gradient borders at this point */
-  /* Sketch doesnt export gradient borders at this point */
-
-  -moz-box-shadow: 0 0px 2px 0px rgba(0, 0, 0, 0.12), 0px 2px 2px 0px rgba(0, 0, 0, 0.24);
-  box-shadow: 0 0px 2px 0px rgba(0, 0, 0, 0.12), 0px 2px 2px 0px rgba(0, 0, 0, 0.24);
 }
 .accountcard {
   color: rgba(0, 0, 0, 0.55);
   line-height: 20px;
   width: 44%;
   min-width: 250px;
-  height: 150px;
+  height: inherit !important;
+  min-height: 150px;
   margin-top: 25px;
   margin-left: 3%;
   margin-right: 2%;
@@ -216,10 +234,23 @@ input:focus {
   text-align: center;
   color: #00BCD4;
   transition: all 0.2s;
+  cursor: pointer;
 }
+.addnewcard{
+    height: 180px;
+    width: 300px;
+    display:none;
+}
+
+.jswarning{
+    height: 50%;
+    width: 50%;
+}
+
 .termsofuse {
   width: 50% !important;
   height: inherit !important;
+  display: none;
 }
 .termsofuse .content {
   padding: 10px;

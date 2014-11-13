@@ -5,31 +5,32 @@
   <title>accShare | Share logins with everyone</title>
   <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
   <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+
   <link rel="stylesheet" href="stylesheets/style.css">
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
 </head>
 
 <body ng-app="accShare" ng-controller="MainCtrl">
-  <div class="siteheader">
+  <div class="siteheader shadow">
     <span class="sitename">AccShare</span>
 </div>
   <div class="container-fluid">
     <div class="row">
       <div class="col-md-2 col-sm-3 hidden-xs">
-        <div class="card searchcard infocard" tooltip="Accounts available" tooltip-trigger="mouseenter" tooltip-placement="bottom">
+        <div class="card searchcard infocard shadow" tooltip="Accounts available" tooltip-trigger="mouseenter" tooltip-placement="bottom">
           <div>
             <span class="fa fa-database"></span> {{count}}
           </div>
         </div>
       </div>
       <div class="col-md-8 col-sm-6 col-xs-12">
-        <div class="card searchcard">
+        <div class="card searchcard shadow">
           <input class="searchbox" type="text" placeholder="Search for a site" ng-model="searchString" ng-bind-html="searchString" ng-keyup="clearAlert(); $event.keyCode == 13 && getAccounts(searchString)" autofocus>
         </div>
       </div>
       <div class="col-md-2 col-sm-3 hidden-xs">
 
-        <div class="card searchcard addcard" ng-click="showForm()">
+        <div class="card searchcard addcard shadow" ng-click="showForm()">
           <span class="fa fa-plus"></span> Add
         </div>
       </div>
@@ -38,7 +39,7 @@
 
       <div class="cards col-md-8 col-md-offset-2 col-sm-12 col-xs-12">
         <div class="alert alert-{{alert.type}}" role="alert" style="margin: 20px 0 -10px 0;" ng-if="alert.msg">{{alert.msg}}</div>
-        <div class="card accountcard op-{{account.downvotes}}" ng-repeat="account in accounts">
+        <div class="card accountcard op-{{account.downvotes}} shadow" ng-repeat="account in accounts">
 
           <div class="header">
             <img src="{{account.favicon}}" alt="" class="favicon">
@@ -63,14 +64,14 @@
       </div>
       <div class="hidden-lg hidden-md hidden-sm col-xs-12">
 
-        <div class="card searchcard addcard" ng-click="showForm()">
+        <div class="card searchcard addcard shadow" ng-click="showForm()">
           <span class="fa fa-plus"></span> Add
         </div>
       </div>
 
     </div>
     <div class="row">
-      <div class="card col-md-8 col-md-offset-2 col-sm-12 col-xs-12 introtext">
+      <div class="card col-md-8 col-md-offset-2 col-sm-12 col-xs-12 introtext shadow">
         <h1>About AccShare</h1>
         <h2>What?</h2>
         <p>AccShare is a service to share Account informations with the rest of the world.</p>
@@ -89,23 +90,23 @@
     </div>
   </div>
 
-  <div class="sitefooter">
+  <div class="sitefooter shadow">
     <a href="http://flxn.de">flxn.de</a> |
     <i class="fa fa-btc"></i> 1HJXdMmYnmcbGBUJnMGpKuBiuWrxKeut6u <i class="fa fa-paypal"></i> <a href="paypal.com">Donate</a> |
     <i class="fa fa-facebook"></i> <i class="fa fa-twitter"></i> <i class="fa fa-google-plus"></i>
 </div>
-  <!--
-      <footer>
-          <div class="container">
-              <div class="col-md-12">
-                  Footer
-              </div>
-          </div>
+  <!-- Main Layout end -->
 
-      </div>
-  -->
+  <script src="//cdnjs.cloudflare.com/ajax/libs/angular.js/1.2.20/angular.min.js"></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/angular.js/1.2.20/angular-cookies.min.js"></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/angular.js/1.2.20/angular-sanitize.min.js"></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/angular-ui-bootstrap/0.11.2/ui-bootstrap.min.js"></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/angular-ui-bootstrap/0.11.2/ui-bootstrap-tpls.min.js"></script>
+  <script src="javascripts/app.js"></script>
+
+  <!-- Not part of layout -->
   <div class="darkenscreen" ng-if="darkenScreen" ng-click="hideForm()"></div>
-  <div class="card accountcard centered" style="height: 180px; width: 300px;" ng-if="showAddForm">
+  <div class="card accountcard centered shadow addnewcard" ng-if="showAddForm">
 
     <div class="header">
       <span class="fa fa-plus favicon hover-white" ng-click="addAccount(url, username, password)" tooltip="Save the login credentials" tooltip-trigger="mouseenter" tooltip-placement="bottom"></span>
@@ -114,29 +115,30 @@
       <img class="loader" src="images/gif-load.gif" ng-if="showLoader">
     </div>
 
-    <div class="details">
+    <form class="details">
       <div class="site">
         <span class="fa fa-globe"></span>
-        <input type="text" placeholder="URL" ng-model="$parent.url" ng-bind-html="$parent.url" tooltip="The URL or the name of the site." tooltip-trigger="focus" tooltip-placement="bottom">
+        <input class="siteinput" type="text" placeholder="URL" ng-model="$parent.url" ng-bind-html="$parent.url" tooltip="The URL or the name of the site." tooltip-trigger="focus" tooltip-placement="bottom">
       </div>
 
       <div class="user">
         <span class="fa fa-user"></span>
-        <input type="text" placeholder="Username" ng-model="username" ng-bind-html="username">
+        <input class="userinput" type="text" placeholder="Username" ng-model="username" ng-bind-html="username">
       </div>
-
 
       <div class="password">
         <span class="fa fa-asterisk"></span>
-        <input type="text" placeholder="Password" ng-model="password" ng-bind-html="password">
+        <input class="passwordinput" type="text" placeholder="Password" ng-model="password" ng-bind-html="password">
       </div>
-    </div>
+
+      <button class="addbutton shadow" ng-click="addAccount(url, username, password)">Add</button>
+  </form>
   </div>
-  <div class="card accountcard termsofuse centered" ng-if="showTermsOfUse">
+  <div class="card accountcard termsofuse centered shadow" ng-if="showTermsOfUse">
     <div class="header">
       <span class="fa fa-check favicon hover-white" ng-click="agreeTOU()" tooltip="Accept the Terms Of Use" tooltip-trigger="mouseenter" tooltip-placement="bottom"></span>
       <div class="site">Terms Of Use</div>
-      <div class="added">This agreement is only shown once.</div>
+      <div class="added">only shown once.</div>
     </div>
     <div class="content">
       <p>You will not share any account informations of sites/services that do not allow such activity.</p>
@@ -145,14 +147,29 @@
       <p>We are not responsible for termination of accounts that are shared on this site.</p>
     </div>
   </div>
+  <noscript>
+    <div class="card accountcard jswarning centered shadow">
+      <div class="header">
+        <span class="fa fa-warning favicon white"></span>
+        <div class="site">Warning</div>
+        <div class="added">Javascript disabled</div>
+      </div>
+      <div class="content" style="text-align: center;">
+        <h3>Javascript has to be enabled to use this site!</h3>
+      </div>
+    </div>
+</noscript>
+  <script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
 
-  <script src="//cdnjs.cloudflare.com/ajax/libs/angular.js/1.2.20/angular.min.js"></script>
-  <script src="//cdnjs.cloudflare.com/ajax/libs/angular.js/1.2.20/angular-cookies.min.js"></script>
-  <script src="//cdnjs.cloudflare.com/ajax/libs/angular.js/1.2.20/angular-sanitize.min.js"></script>
-  <script src="//cdnjs.cloudflare.com/ajax/libs/angular-ui-bootstrap/0.11.2/ui-bootstrap.min.js"></script>
-  <script src="//cdnjs.cloudflare.com/ajax/libs/angular-ui-bootstrap/0.11.2/ui-bootstrap-tpls.min.js"></script>
-  <script src="javascripts/app.js"></script>
-  <script src="javascripts/site.js"></script>
+  ga('create', 'UA-56721897-1', 'auto');
+  ga('send', 'pageview');
+
+</script>
+<script src="javascripts/site.js"></script>
 </body>
 
 </html>
