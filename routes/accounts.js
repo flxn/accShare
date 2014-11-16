@@ -21,7 +21,7 @@ router.get('/getCount', function(req, res) {
 });
 
 router.get('/:site', function(req, res) {
-    Account.find({ site: new RegExp(req.params.site, "i") }).sort({ added: 'desc' }).limit(20).exec(function(err, accounts) {
+    Account.find({ site: new RegExp(req.params.site, "i") }).sort({ downvotes: 'asc', added: 'desc' }).limit(20).exec(function(err, accounts) {
         if(err)
             res.send(err);
 

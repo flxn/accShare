@@ -1,187 +1,199 @@
-<html>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
 
 <head>
-  <link href='http://fonts.googleapis.com/css?family=Roboto' rel='stylesheet' type='text/css'>
-  <title>accShare | Share logins with everyone</title>
-  <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
-  <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 
-  <link rel="stylesheet" href="stylesheets/style.css">
-  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <title>accShare | Share logins with everyone</title>
+    <meta name="keywords" content="account, sharing, logins, privacy, registration" />
+    <meta name="language" content="en" />
+    <meta name="description" content="No more annoying registrations! Share accounts and fight for more online privacy and a free internet. Help to improve the web on AccShare.net" />
+    <link href='http://fonts.googleapis.com/css?family=Roboto' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+
+    <link rel="stylesheet" href="stylesheets/style.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
     <link rel="apple-touch-icon" sizes="57x57" href="/apple-touch-icon-57x57.png">
-<link rel="apple-touch-icon" sizes="114x114" href="/apple-touch-icon-114x114.png">
-<link rel="apple-touch-icon" sizes="72x72" href="/apple-touch-icon-72x72.png">
-<link rel="apple-touch-icon" sizes="144x144" href="/apple-touch-icon-144x144.png">
-<link rel="apple-touch-icon" sizes="60x60" href="/apple-touch-icon-60x60.png">
-<link rel="apple-touch-icon" sizes="120x120" href="/apple-touch-icon-120x120.png">
-<link rel="apple-touch-icon" sizes="76x76" href="/apple-touch-icon-76x76.png">
-<link rel="apple-touch-icon" sizes="152x152" href="/apple-touch-icon-152x152.png">
-<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon-180x180.png">
-<link rel="icon" type="image/png" href="/favicon-192x192.png" sizes="192x192">
-<link rel="icon" type="image/png" href="/favicon-160x160.png" sizes="160x160">
-<link rel="icon" type="image/png" href="/favicon-96x96.png" sizes="96x96">
-<link rel="icon" type="image/png" href="/favicon-16x16.png" sizes="16x16">
-<link rel="icon" type="image/png" href="/favicon-32x32.png" sizes="32x32">
-<meta name="msapplication-TileColor" content="#00aba9">
-<meta name="msapplication-TileImage" content="/mstile-144x144.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="/apple-touch-icon-114x114.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="/apple-touch-icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="144x144" href="/apple-touch-icon-144x144.png">
+    <link rel="apple-touch-icon" sizes="60x60" href="/apple-touch-icon-60x60.png">
+    <link rel="apple-touch-icon" sizes="120x120" href="/apple-touch-icon-120x120.png">
+    <link rel="apple-touch-icon" sizes="76x76" href="/apple-touch-icon-76x76.png">
+    <link rel="apple-touch-icon" sizes="152x152" href="/apple-touch-icon-152x152.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon-180x180.png">
+    <link rel="icon" type="image/png" href="/favicon-192x192.png" sizes="192x192">
+    <link rel="icon" type="image/png" href="/favicon-160x160.png" sizes="160x160">
+    <link rel="icon" type="image/png" href="/favicon-96x96.png" sizes="96x96">
+    <link rel="icon" type="image/png" href="/favicon-16x16.png" sizes="16x16">
+    <link rel="icon" type="image/png" href="/favicon-32x32.png" sizes="32x32">
+    <meta name="msapplication-TileColor" content="#00aba9">
+    <meta name="msapplication-TileImage" content="/mstile-144x144.png">
 </head>
 
 <body ng-app="accShare" ng-controller="MainCtrl">
-  <div class="siteheader shadow">
-    <span class="sitename">AccShare</span>
-</div>
-  <div class="container-fluid">
-    <div class="row">
-      <div class="col-md-2 col-sm-3 hidden-xs">
-        <div class="card searchcard infocard shadow" tooltip="Accounts available" tooltip-trigger="mouseenter" tooltip-placement="bottom">
-          <div>
-            <span class="fa fa-database"></span> {{count}}
-          </div>
-        </div>
-      </div>
-      <div class="col-md-8 col-sm-6 col-xs-12">
-        <div class="card searchcard shadow">
-          <input class="searchbox" type="text" placeholder="Search for a site" ng-model="searchString" ng-bind-html="searchString" ng-keyup="clearAlert(); $event.keyCode == 13 && getAccounts(searchString)" autofocus>
-        </div>
-      </div>
-      <div class="col-md-2 col-sm-3 hidden-xs">
-
-        <div class="card searchcard addcard shadow" ng-click="showForm()">
-          <span class="fa fa-plus"></span> Add
-        </div>
-      </div>
+    <div class="siteheader shadow">
+        <span class="sitename">AccShare</span>
     </div>
-    <div class="row">
-
-      <div class="cards col-md-8 col-md-offset-2 col-sm-12 col-xs-12">
-        <div class="alert alert-{{alert.type}}" role="alert" style="margin: 20px 0 -10px 0;" ng-if="alert.msg">{{alert.msg}}</div>
-        <div class="card accountcard op-{{account.downvotes}} shadow" ng-repeat="account in accounts">
-
-          <div class="header">
-            <img src="{{account.favicon}}" alt="" class="favicon">
-            <div class="site">{{account.site}}</div>
-            <div class="added">{{account.added}}</div>
-            <div class="downvotes dvcolor-{{account.downvotes}}">
-              {{account.downvotes}}
-              <span class="fa fa-thumbs-down icon-downvote white" ng-click="downvote(account._id); getAccounts(searchString);" tooltip="Downvote this account."></span>
+    <div class="container-fluid">
+        <div class="row hide-load">
+            <div class="col-md-2 col-sm-3 hidden-xs">
+                <div class="card searchcard infocard shadow" tooltip="Accounts available" tooltip-trigger="mouseenter" tooltip-placement="bottom">
+                    <div>
+                        <span class="fa fa-database"></span> {{count}}
+                    </div>
+                </div>
             </div>
-          </div>
+            <div class="col-md-8 col-sm-6 col-xs-12">
+                <div class="card searchcard shadow">
+                    <input class="searchbox" type="text" placeholder="Search for a site" ng-model="searchString" ng-bind-html="searchString" ng-keyup="clearAlert(); $event.keyCode == 13 && getAccounts(searchString)" autofocus>
+                </div>
+            </div>
+            <div class="col-md-2 col-sm-3 hidden-xs">
 
-          <div class="details">
-            <i class="fa fa-user"></i>
-            <input class="user" value="{{account.user}}" onclick="this.select()" readonly>
+                <div class="card searchcard addcard shadow" ng-click="showForm()">
+                    <span class="fa fa-plus"></span>Add
+                </div>
+            </div>
         </div>
-        <div class="details">
-            <i class="fa fa-asterisk"></i>
-            <input class="password" value="{{account.password}}" onclick="this.select()" readonly>
+
+      <div class="row">
+                  <div class="card col-md-8 col-md-offset-2 col-sm-10 col-sm-offset-1 col-xs-10 col-xs-offset-1 introtext shadow hide-load" ng-if="showTermsOfUse">
+                      <h2>Terms of use</h2>
+                      <p>You will not share any account informations of sites/services that do not allow such activity.</p>
+                      <p>You will only share account informations that you have ownership of and that you are permitted to share.</p>
+                      <p>You assign the copyright of every information you add to accShare.</p>
+                      <p>We are not responsible for termination of accounts that are shared on this site.</p>
+                      <button class="shadow toubutton" ng-click="agreeTOU()">Accept</button>
+                  </div>
+              </div>
+
+        <div class="row">
+
+            <div class="cards col-md-8 col-md-offset-2 col-xs-10 col-xs-offset-1 col-sm-12 col-sm-offset-0 hide-load">
+                <div class="alert alert-{{alert.type}}" role="alert" style="margin: 20px 0 -10px 0;" ng-if="alert.msg">{{alert.msg}}</div>
+                <div class="card accountcard op-{{account.downvotes}} shadow" ng-repeat="account in accounts">
+
+                    <div class="header">
+                        <img src="{{account.favicon}}" alt="" class="favicon">
+                        <div class="site">{{account.site}}</div>
+                        <div class="added">{{account.added}}</div>
+                        <div class="downvotes dvcolor-{{account.downvotes}}">
+                            {{account.downvotes}}
+                            <span class="fa fa-thumbs-down icon-downvote white" ng-click="downvote(account._id); getAccounts(searchString);" tooltip="Downvote this account."></span>
+                        </div>
+                    </div>
+
+                    <div class="details">
+                        <i class="fa fa-user"></i>
+                        <input class="user" value="{{account.user}}" onclick="this.select()" readonly>
+                    </div>
+                    <div class="details">
+                        <i class="fa fa-asterisk"></i>
+                        <input class="password" value="{{account.password}}" onclick="this.select()" readonly>
+                    </div>
+                </div>
+
+            </div>
+          
         </div>
+
+        <div class="row">
+
+          <div class="hidden-lg hidden-md hidden-sm col-xs-12">
+
+                <div class="card searchcard addcard shadow" ng-click="showForm()">
+                    <span class="fa fa-plus"></span>Add
+                </div>
+            </div>
+
+            <div class="card col-md-8 col-md-offset-2 col-sm-10 col-sm-offset-1 col-xs-12 introtext shadow">
+                <h1>An intro to AccShare</h1>
+                <h2>What?</h2>
+                <p>AccShare is a platform for sharing login credentials.</p>
+                <h2>Why?</h2>
+                <p>You browse the web and stumble upon a site you want to try but of course you have to create an account first. This means you have to give out your email and name even if you are not sure wether you will use the site for more than 5 minutes.
+                    <br />With AccShare you can search for this site and just login with a shared account.
+                    <strong>Less hassle. More privacy.</strong>
+                </p>
+                <h2>How does it work?</h2>
+                <p>AccShare is completely community-driven. Users create Fake-Accounts for sites and add them to our database to help others. The more people participate the more sites can be added.</p>
+            </div>
         </div>
+    </div>
 
-      </div>
-      <div class="hidden-lg hidden-md hidden-sm col-xs-12">
+    <!-- Main Layout end -->
 
-        <div class="card searchcard addcard shadow" ng-click="showForm()">
-          <span class="fa fa-plus"></span> Add
+    <script src="//cdnjs.cloudflare.com/ajax/libs/angular.js/1.2.20/angular.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/angular.js/1.2.20/angular-cookies.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/angular.js/1.2.20/angular-sanitize.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/angular-ui-bootstrap/0.11.2/ui-bootstrap.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/angular-ui-bootstrap/0.11.2/ui-bootstrap-tpls.min.js"></script>
+    <script src="javascripts/app.js"></script>
+
+    <!-- Not part of layout -->
+    <div class="hide-load">
+        <div class="darkenscreen" ng-if="darkenScreen" ng-click="hideForm()"></div>
+        <div class="card accountcard centered shadow addnewcard" ng-if="showAddForm">
+
+            <div class="header">
+                <span class="fa fa-plus favicon hover-white" ng-click="addAccount(url, username, password)" tooltip="Save the login credentials" tooltip-trigger="mouseenter" tooltip-placement="bottom"></span>
+                <div class="site">Add a new Account</div>
+                <div class="added">{{currentDate}}</div>
+                <img class="loader" src="images/gif-load.gif" ng-if="showLoader">
+            </div>
+
+            <form class="details">
+                <div class="site">
+                    <span class="fa fa-globe"></span>
+                    <input class="siteinput" type="text" placeholder="URL" ng-model="$parent.url" ng-bind-html="$parent.url" tooltip="The URL or the name of the site." tooltip-trigger="focus" tooltip-placement="bottom">
+                </div>
+
+                <div class="user">
+                    <span class="fa fa-user"></span>
+                    <input class="userinput" type="text" placeholder="Username" ng-model="username" ng-bind-html="username">
+                </div>
+
+                <div class="password">
+                    <span class="fa fa-asterisk"></span>
+                    <input class="passwordinput" type="text" placeholder="Password" ng-model="password" ng-bind-html="password">
+                </div>
+
+                <button class="addbutton shadow" ng-click="addAccount(url, username, password)">Add</button>
+            </form>
         </div>
-      </div>
-
     </div>
-    <div class="row">
-      <div class="card col-md-8 col-md-offset-2 col-sm-12 col-xs-12 introtext shadow">
-        <h1>About AccShare</h1>
-        <h2>What?</h2>
-        <p>AccShare is a service to share Account informations with the rest of the world.</p>
-        <h2>Why?</h2>
-        <p>The internet is full of login forms. Nowadays, almost every site requires you to register. No matter if you just want to test it out, view an attachment on a forum or get access to some content you need.</p>
-        <p>This is a serious flaw in todays web!</p>
-        <p>I don't want to give out my name, birthday and email address to some random website owner I don't know and you probably won't either... but sadly it's necessary.</p>
-        <h2>How?</h2>
-        <p>AccShare tries to solve this problem by providing a platform to share fake login informations.</p>
-        <p>The site relies heavily on an active community to reach it's goal of a hassel free internet but it's super easy to participate:</p>
-        <p>If there are no credentials for a site you need create a fake account and add it to AccShare to help others
-          <br>(But please comply with the Terms Of Use when doing so).
-          <br>A small step for you a <strike>huge</strike> slightly bigger leap for an open internet.</p>
-        <p>When you like this idea please spread this site. The more people participate the better.</p>
-      </div>
-    </div>
-  </div>
+    <noscript>
+        <div class="card accountcard jswarning centered shadow">
+            <div class="header">
+                <span class="fa fa-warning favicon white"></span>
+                <div class="site">Warning</div>
+                <div class="added">Javascript disabled</div>
+            </div>
+            <div class="content" style="text-align: center;">
+                <h3>Javascript has to be enabled to use this site!</h3>
+            </div>
+        </div>
+    </noscript>
+    <script>
+    (function(i, s, o, g, r, a, m) {
+        i['GoogleAnalyticsObject'] = r;
+        i[r] = i[r] || function() {
+            (i[r].q = i[r].q || []).push(arguments)
+        }, i[r].l = 1 * new Date();
+        a = s.createElement(o),
+            m = s.getElementsByTagName(o)[0];
+        a.async = 1;
+        a.src = g;
+        m.parentNode.insertBefore(a, m)
+    })(window, document, 'script', '//www.google-analytics.com/analytics.js', 'ga');
 
-  <!-- Main Layout end -->
+    ga('create', 'UA-56721897-1', 'auto');
+    ga('send', 'pageview');
+    </script>
 
-  <script src="//cdnjs.cloudflare.com/ajax/libs/angular.js/1.2.20/angular.min.js"></script>
-  <script src="//cdnjs.cloudflare.com/ajax/libs/angular.js/1.2.20/angular-cookies.min.js"></script>
-  <script src="//cdnjs.cloudflare.com/ajax/libs/angular.js/1.2.20/angular-sanitize.min.js"></script>
-  <script src="//cdnjs.cloudflare.com/ajax/libs/angular-ui-bootstrap/0.11.2/ui-bootstrap.min.js"></script>
-  <script src="//cdnjs.cloudflare.com/ajax/libs/angular-ui-bootstrap/0.11.2/ui-bootstrap-tpls.min.js"></script>
-  <script src="javascripts/app.js"></script>
-
-  <!-- Not part of layout -->
-  <div class="darkenscreen" ng-if="darkenScreen" ng-click="hideForm()"></div>
-  <div class="card accountcard centered shadow addnewcard" ng-if="showAddForm">
-
-    <div class="header">
-      <span class="fa fa-plus favicon hover-white" ng-click="addAccount(url, username, password)" tooltip="Save the login credentials" tooltip-trigger="mouseenter" tooltip-placement="bottom"></span>
-      <div class="site">Add a new Account</div>
-      <div class="added">{{currentDate}}</div>
-      <img class="loader" src="images/gif-load.gif" ng-if="showLoader">
-    </div>
-
-    <form class="details">
-      <div class="site">
-        <span class="fa fa-globe"></span>
-        <input class="siteinput" type="text" placeholder="URL" ng-model="$parent.url" ng-bind-html="$parent.url" tooltip="The URL or the name of the site." tooltip-trigger="focus" tooltip-placement="bottom">
-      </div>
-
-      <div class="user">
-        <span class="fa fa-user"></span>
-        <input class="userinput" type="text" placeholder="Username" ng-model="username" ng-bind-html="username">
-      </div>
-
-      <div class="password">
-        <span class="fa fa-asterisk"></span>
-        <input class="passwordinput" type="text" placeholder="Password" ng-model="password" ng-bind-html="password">
-      </div>
-
-      <button class="addbutton shadow" ng-click="addAccount(url, username, password)">Add</button>
-  </form>
-  </div>
-  <div class="card accountcard termsofuse centered shadow" ng-if="showTermsOfUse">
-    <div class="header">
-      <span class="fa fa-check favicon hover-white" ng-click="agreeTOU()" tooltip="Accept the Terms Of Use" tooltip-trigger="mouseenter" tooltip-placement="bottom"></span>
-      <div class="site">Terms Of Use</div>
-      <div class="added">only shown once.</div>
-    </div>
-    <div class="content">
-      <p>You will not share any account informations of sites/services that do not allow such activity.</p>
-      <p>You will only share account informations that you have ownership of and that you are permitted to share.</p>
-      <p>You assign the copyright of every information you add to accShare.</p>
-      <p>We are not responsible for termination of accounts that are shared on this site.</p>
-    </div>
-  </div>
-  <noscript>
-    <div class="card accountcard jswarning centered shadow">
-      <div class="header">
-        <span class="fa fa-warning favicon white"></span>
-        <div class="site">Warning</div>
-        <div class="added">Javascript disabled</div>
-      </div>
-      <div class="content" style="text-align: center;">
-        <h3>Javascript has to be enabled to use this site!</h3>
-      </div>
-    </div>
-</noscript>
-  <script>
-  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
-
-  ga('create', 'UA-56721897-1', 'auto');
-  ga('send', 'pageview');
-
-</script>
-
-<script src="javascripts/site.js"></script>
+    <script src="javascripts/site.js"></script>
 </body>
 
 </html>

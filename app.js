@@ -5,10 +5,11 @@ var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 
-var api = require('./routes/accounts');
-var index = require('./routes/index');
-
 var app = express();
+
+var api = require('./routes/accounts');
+if (app.get('env') === 'development')
+    var index = require('./routes/index');
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -20,7 +21,8 @@ app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
-app.use(express.static(path.join(__dirname, 'public')));
+if (app.get('env') === 'development')
+    app.use(express.static(path.join(__dirname, 'public')));
 
 //app.use('/', index);
 app.use('/api/accounts', api);

@@ -111,8 +111,7 @@ namespace.controller('MainCtrl', ['$scope', '$http', '$cookies', function($scope
   }
 
   $scope.agreeTOU = function() {
-    $scope.darkenScreen = false;
-    $scope.showTermsOfUse = false;
+   $scope.showTermsOfUse = false;
     $cookies.agreedToTermsOfUse = 1;
   }
 
@@ -126,7 +125,6 @@ namespace.controller('MainCtrl', ['$scope', '$http', '$cookies', function($scope
   $scope.getCount();
 
   if ($cookies.agreedToTermsOfUse != 1) {
-    $scope.darkenScreen = true;
     $scope.showTermsOfUse = true;
   }
 
