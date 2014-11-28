@@ -1,6 +1,6 @@
 body {
   background-image: url('../images/Download (1).png');
-  font:1rem Roboto-Regular,Helvetica,Arial,sans-serif;
+  font-size: 1rem;
 }
 
 .container div {
@@ -13,12 +13,12 @@ body {
   margin-right:auto;
 }
 
-.searchbox {
- 
+.searchbox-title h4 {
+  margin-bottom: -10px;
+  text-align: center;
 }
 
 #search {
-  
 
 }
 

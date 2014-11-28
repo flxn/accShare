@@ -8,7 +8,6 @@
     <meta name="keywords" content="account, sharing, logins, privacy, registration" />
     <meta name="language" content="en" />
     <meta name="description" content="No more annoying registrations! Share accounts and fight for more online privacy and a free internet. Help to improve the web on AccShare.net" />
-    <link href='http://fonts.googleapis.com/css?family=Roboto' rel='stylesheet' type='text/css'>
     <link rel="stylesheet" href="css/materialize.min.css" />
     <link rel="stylesheet" href="stylesheets/style.css">
 
@@ -55,17 +54,17 @@
     <div id="search" class="section">
       <div class="container">
         <div class="col l10 m10 s12 offset-l1 offset-m1">
-          <div class="card cyan">
+          <div class="card grey">
+            <div class="card-content white-text searchbox-title">
+              <h4>Search for a site</h4>
+            </div>
           <div class="card-footer">
-            <div class="row">
              <div class="input-field col s12">
-              <input id="url" class="searchbox" type="text" required>
-              <label for="url" class="black-text">URL</label>
-            </div>
-            </div>
+              <input id="url" class="searchbox" type="text" placeholder="URL / Name" ng-model="searchString" ng-bind-html="searchString" ng-keyup="clearAlert(); $event.keyCode == 13 && getAccounts(searchString)" autofocus>
+             </div>
           </div>
-      </div>
-      </div>
+          </div>
+        </div>
       </div>
       
       <div class="row">
