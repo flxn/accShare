@@ -1,24 +1,13 @@
-var namespace = angular.module('accShare', ['ngCookies', 'ngSanitize', 'ui.bootstrap']);
+var namespace = angular.module('accShare', ['ngCookies', 'ngSanitize']);
 
-String.prototype.replaceArr = function(findArr, replaceArr) {
-  var inStr = this;
-  var oneReplace = false;
-  if (replaceArr.length == 1) {
-    oneReplace = true;
-  }
-  for (var i in findArr) {
-    if (oneReplace) {
-      inStr = inStr.replace(findArr[i], replaceArr[0]);
-    } else {
-      inStr = inStr.replace(findArr[i], replaceArr[i]);
-    }
-  }
-  return inStr;
+var getUnifiedUrl = function(url) {
+  var temp = url.replace("http://", '').replace("https://", '').replace("www.", '');
+    return temp.split('?')[0].split('/')[0];
 }
 
 namespace.controller('MainCtrl', ['$scope', '$http', '$cookies', function($scope, $http, $cookies) {
   $scope.getAccounts = function(site) {
-    var searchString = site.replaceArr(['http://', 'https://', 'www.'], ['']);
+    var searchString = getUnifiedUrl(site);
     $http.get('/api/accounts/' + searchString).success(function(data) {
       if (data.length == 0)
         $scope.alert = {

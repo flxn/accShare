@@ -9,10 +9,10 @@
     <meta name="language" content="en" />
     <meta name="description" content="No more annoying registrations! Share accounts and fight for more online privacy and a free internet. Help to improve the web on AccShare.net" />
     <link href='http://fonts.googleapis.com/css?family=Roboto' rel='stylesheet' type='text/css'>
-    <link rel="stylesheet" href="css/materialize.min.css" />
-    <!--
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+
     <link rel="stylesheet" href="stylesheets/style.css">
-    -->
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
     <link rel="apple-touch-icon" sizes="57x57" href="/apple-touch-icon-57x57.png">
     <link rel="apple-touch-icon" sizes="114x114" href="/apple-touch-icon-114x114.png">
@@ -33,47 +33,34 @@
 </head>
 
 <body ng-app="accShare" ng-controller="MainCtrl">
-    <nav>
-      <div class="nav-wrapper">
-        <a href="#" class="brand-logo">Logo</a>
-        <ul id="nav-mobile" class="right side-nav">
-          <li><a href="sass.html">Sass</a></li>
-          <li><a href="components.html">Components</a></li>
-          <li><a href="javascript.html">JavaScript</a></li>
-        </ul>
-        <a class="button-collapse" href="#" data-activates="nav-mobile"><i class="mdi-navigation-menu"></i></a>
-      </div>
-    </nav>
-
+    <div class="siteheader shadow">
+        <span class="sitename">AccShare</span>
+        <span class="extensionlink hidden-xs"><span class="fa fa-puzzle-piece"></span> <a href="">Get our Chrome Extension</a></span>
+    </div>
     <div class="container-fluid">
         <div class="row hide-load">
-            <div class="col l2 m3 hide-on-small-and-down">
-            <div class="card">
-                <div class="card-content searchcard infocard shadow" tooltip="Accounts available" tooltip-trigger="mouseenter" tooltip-placement="bottom">
+            <div class="col-md-2 col-sm-3 hidden-xs">
+                <div class="card searchcard infocard shadow" tooltip="Accounts available" tooltip-trigger="mouseenter" tooltip-placement="bottom">
                     <div>
                         <span class="fa fa-database"></span> {{count}}
                     </div>
                 </div>
             </div>
-            </div>
-            <div class="col l8 m6 s12">
-            <div class="card"> 
-                <div class="card-content searchcard shadow">
+            <div class="col-md-8 col-sm-6 col-xs-12">
+                <div class="card searchcard shadow">
                     <input class="searchbox" type="text" placeholder="Search for a site" ng-model="searchString" ng-bind-html="searchString" ng-keyup="clearAlert(); $event.keyCode == 13 && getAccounts(searchString)" autofocus>
                 </div>
             </div>
-             </div>
-            <div class="col l2 m3 hide-on-small-and-down">
-                <div class="card">
-                <div class="card-content searchcard addcard shadow" ng-click="showForm()">
+            <div class="col-md-2 col-sm-3 hidden-xs">
+
+                <div class="card searchcard addcard shadow" ng-click="showForm()">
                     <span class="fa fa-plus"></span>Add
-                </div>
                 </div>
             </div>
         </div>
 
       <div class="row">
-                  <div class="card col l8 offset-l2 m10 offset-m1 s10 offset-s1 introtext shadow hide-load" ng-if="showTermsOfUse">
+                  <div class="card col-md-8 col-md-offset-2 col-sm-10 col-sm-offset-1 col-xs-10 col-xs-offset-1 introtext shadow hide-load" ng-if="showTermsOfUse">
                       <h2>Terms of use</h2>
                       <p>You will not share any account informations of sites/services that do not allow such activity.</p>
                       <p>You will only share account informations that you have ownership of and that you are permitted to share.</p>
@@ -86,7 +73,7 @@
 
         <div class="row">
 
-            <div class="cards col l8 offset-l2 s10 offset-s1 m12 hide-load">
+            <div class="cards col-md-8 col-md-offset-2 col-xs-10 col-xs-offset-1 col-sm-12 col-sm-offset-0 hide-load">
                 <div class="alert alert-{{alert.type}}" role="alert" style="margin: 20px 0 -10px 0;" ng-if="alert.msg">{{alert.msg}}</div>
                 <div class="card accountcard op-{{account.downvotes}} shadow" ng-repeat="account in accounts">
 
@@ -116,13 +103,13 @@
 
         <div class="row">
 
-          <div class="col hide-on-med-and-up s12">
+          <div class="hidden-lg hidden-md hidden-sm col-xs-12">
                 <div class="card searchcard addcard shadow" ng-click="showForm()">
                     <span class="fa fa-plus"></span>Add
                 </div>
             </div>
 
-            <div class="card col l8 offset-l2 m10 offset-m1 s12 introtext shadow">
+            <div class="card col-md-8 col-md-offset-2 col-sm-10 col-sm-offset-1 col-xs-12 introtext shadow">
                 <h1>An Intro to AccShare</h1>
                 <h2>What?</h2>
                 <p>AccShare is a platform for sharing login credentials.</p>
@@ -139,7 +126,7 @@
         </div>
 
         <div class="row">
-            <div class="card col l8 offset-l2 m10 offset-m1 s12 introtext shadow">
+            <div class="card col-md-8 col-md-offset-2 col-sm-10 col-sm-offset-1 col-xs-12 introtext shadow">
                 <h1>AccShare Browser Extension</h1>
                 <p>With our new AccShare Chrome Extension account sharing got even easier.</p>
             </div>

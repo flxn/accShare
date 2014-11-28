@@ -59,12 +59,12 @@ background:#00bcd4;
 top:0;
 left:0;
 width:100%;
-height:50px;
+height: inherit;
 background:#00bcd4;
 margin-bottom:10px;
 line-height:50px;
 color:#FFF;
-cursor:pointer;
+cursor:default;
 }
 
 .shadow {
@@ -128,6 +128,7 @@ display:none;
 background:#fff;
 height:100px;
 margin-top:15px;
+margin-bottom: 15px;
 width:100%;
 font-size:2.5rem;
 }
@@ -336,6 +337,11 @@ z-index:1000;
 margin:0!important;
 }
 
+.extensionlink {
+	float: right;
+	margin-right: 50px;
+}
+
 .darkenscreen {
 position:fixed;
 left:0;
@@ -347,8 +353,8 @@ z-index:999;
 }
 
 .introtext {
-margin-top:20px;
-margin-bottom:30px;
+	margin-top: 15px;
+margin-bottom:15px;
 padding:10px;
 }
 
