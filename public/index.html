@@ -31,98 +31,139 @@
 </head>
 
 <body ng-app="accShare" ng-controller="MainCtrl">
-   <nav>
-      <div class="nav-wrapper">
-        <a href="#" class="brand-logo">AccShare</a>
-        <ul id="nav-mobile" class="right side-nav">
-          <li><a href="index.html">Search</a></li>
-          <li><a href="about.html">About</a></li>
-        </ul>
-        <a class="button-collapse" href="#" data-activates="nav-mobile"><i class="mdi-navigation-menu"></i></a>
-      </div>
+    <nav>
+        <div class="nav-wrapper indigo">
+            <a href="#" class="brand-logo">AccShare</a>
+            
+            <ul id="nav-mobile" class="right side-nav">
+
+                <li><a href="#search">Search</a>
+                </li>
+                <li><a href="#about">About</a>
+                </li>
+            </ul>
+            <a class="button-collapse" href="#" data-activates="nav-mobile"><i class="mdi-navigation-menu"></i></a>
+            
+        </div>
     </nav>
-  <div class="row white z-depth-1">
-    <div class="container">
-      <ul class="tabs" style="width: 100%; margin-left: auto; margin-right: auto;">
-        <li class="tab" style="max-width: 50% !important; width: 50% !important;"><a href="#search" class="active">Search</a></li>
-        <li class="tab" style="max-width: 50% !important; width: 50% !important;"><a href="#about" class="">About</a></li>
-      </ul>
+    <div class="row indigo z-depth-1">
+        <div class="container">
+            <ul class="tabs" style="width: 100%; margin-left: auto; margin-right: auto;">
+                <li class="tab indigo" style="max-width: 50% !important; width: 50% !important;"><a href="#search" class="active white-text">Search</a>
+                </li>
+                <li class="tab indigo" style="max-width: 50% !important; width: 50% !important;"><a href="#about" class="white-text">About</a>
+                </li>
+            </ul>
+        </div>
     </div>
-  </div>
-  
+
     <!-- main page content -->
     <div id="search" class="section">
-      <div class="container">
-        <div class="col l10 m10 s12 offset-l1 offset-m1">
-          <div class="card grey">
-            <div class="card-content white-text searchbox-title">
-              <h4>Search for a site</h4>
-            </div>
-          <div class="card-footer">
-             <div class="input-field col s12">
-              <input id="url" class="searchbox" type="text" placeholder="URL / Name" ng-model="searchString" ng-bind-html="searchString" ng-keyup="clearAlert(); $event.keyCode == 13 && getAccounts(searchString)" autofocus>
-             </div>
-          </div>
-          </div>
-        </div>
-      </div>
-      
-      <div class="row">
         <div class="container">
-          <div class="results l10 m10 s12 offset-l1 offset-m1">
-      <!-- Searchbar -->
-        <div class="card accountcard op-{{account.downvotes}} shadow hide-load" ng-repeat="account in accounts">
-
-                    <div class="header">
-                        <img src="{{account.favicon}}" alt="" class="favicon">
-                        <div class="site">{{account.site}}</div>
-                        <div class="added">{{account.added}}</div>
-                        <div class="downvotes dvcolor-{{account.downvotes}}">
-                            {{account.downvotes}}
-                            <span class="fa fa-thumbs-down icon-downvote white" ng-click="downvote(account._id); getAccounts(searchString);" tooltip="Downvote this account."></span>
+            <div class="col l10 m10 s12 offset-l1 offset-m1">
+                <div class="card indigo fade-in">
+                    <div class="card-content white-text searchbox-title">
+                        <h4>Search for a site</h4>
+                        <a href="#addnew" class="btn waves-effect waves-light modal-trigger pink lighten-2 hide-on-small-and-down"><i class="mdi-content-add"></i>Add new</a>
+                        <a href="#addnew" class="btn waves-effect waves-light modal-trigger pink lighten-2 hide-on-med-and-up"><i class="mdi-content-add"></i>Add</a>
+                    </div>
+                    <div class="card-footer">
+                        <div class="input-field col s12">
+                            <input id="url" class="searchbox" type="text" placeholder="URL / Name" ng-model="searchString" ng-bind-html="searchString" ng-keyup="clearAlert(); $event.keyCode == 13 && getAccounts(searchString)" required>
                         </div>
                     </div>
+                </div>
+            </div>
+        </div>
 
-                    <div class="details">
-                        <i class="fa fa-user"></i>
-                        <input class="user" value="{{account.user}}" onclick="this.select()" readonly>
-                    </div>
-                    <div class="details">
-                        <i class="fa fa-asterisk"></i>
-                        <input class="password" value="{{account.password}}" onclick="this.select()" readonly>
+        <div class="row">
+
+            <div class="container hide-load">
+                <div class="results col l10 m10 s12 offset-l1 offset-m1">
+                    <!-- Searchbar -->
+                    <div class="card accountcard op-{{account.downvotes}} z-depth-1 fade-in" ng-repeat="account in accounts">
+
+                        <div class="card-content white-text pink lighten-2">
+                            <div class="site"><h1>{{account.site}}</h1></div>
+                            <div class="added"><h3>{{account.added}}</h3></div>
+                            <div class="downvotes dvcolor-{{account.downvotes}}">
+                                {{account.downvotes}}
+                                <span class="mdi-action-thumb-down icon-downvote text-white" ng-click="downvote(account._id); getAccounts(searchString);" tooltip="Downvote this account."></span>
+                            </div>
+                        </div>
+                        <div class="card-footer">
+                            <div class="details">
+                                <i class="mdi-social-person"></i>
+                                <input id="input-user" type="text" class="user" value="{{account.user}}" onclick="this.select()" readonly>
+                            </div>
+                            <div class="details">
+                                <i class="mdi-communication-vpn-key"></i>
+                                <input id="input-password" type="text" class="password" value="{{account.password}}" onclick="this.select()" readonly>
+                            </div>
+                        </div>
                     </div>
                 </div>
-      </div>   
+
+            </div>
         </div>
+
+
+    </div>
+
+    <!-- About Section -->
+    <div id="about">
+        <div class="section lime-green ighten-2">
+            <div class="container grey-text darken-3">
+                <h1>About AccShare</h1>
+            </div>
+        </div>
+        <div class="section white z-depth-1">
+            <div class="container">
+                <h2>What?</h2>
+                <p>AccShare is a platform for sharing login credentials.</p>
+                <h2>Why?</h2>
+                <p>Everyone has probably encountered this situation:
+                    <br /> You browse the web and stumble upon a site you want to test or that has content you want to access that is free but you have to create an account first to use it. This means you have to give out your email and name even if you are not sure wether you will use the site for more than 5 minutes.
+                    <br />With AccShare you can avoid this unnecessary hurdle and just log in with a shared account
+                    <br />
+                    <strong>Less hassle. More privacy.</strong>
+                </p>
+                <h2>How does it work?</h2>
+                <p>AccShare is completely community-driven. Users create Fake-Accounts for sites and add them to our database to help others. The more people participate the more sites can be added.</p>
+                <h1>Privacy</h1>
+                <p>Of course you do not have to register to use this site, this means no personal information is stored. Furthemore no IPs are logged by the webserver and no UUIDs are generated to track users. The site is just using Google Analytics for general statistics but feel free to block it in your browser with a plugin like Ghostery.</p>
+            </div>
+        </div>
+    </div>
+    
+
+    <!-- Add Modal -->
+    <div id="addnew" class="modal">
+      <h4>Add a new site</h4>
+      <div class="input-field col s12">
+          <input id="newurl" class="" type="text" required>
+          <label for="newurl">URL / Name</label>
       </div>
-       
-      
-    </div>  
-  
-        
-  
-  
-    <noscript>
-        <div class="card accountcard jswarning centered shadow">
-            <div class="header">
-                <span class="fa fa-warning favicon white"></span>
-                <div class="site">Warning</div>
-                <div class="added">Javascript disabled</div>
-            </div>
-            <div class="content" style="text-align: center;">
-                <h3>Javascript has to be enabled to use this site!</h3>
-            </div>
-        </div>
-    </noscript>
+      <div class="input-field col s12">
+          <input id="newuser" class="" type="text" required>
+          <label for="newuser">Username</label>
+      </div>
+      <div class="input-field col s12">
+          <input id="newpassword" class="" type="text" required>
+          <label for="newpassword">Password</label>
+      </div>
+      <a href="" class="waves-effect btn flat modal_close">Add</a>
+    </div>
+
     <script src="//cdnjs.cloudflare.com/ajax/libs/angular.js/1.2.20/angular.min.js"></script>
     <script src="//cdnjs.cloudflare.com/ajax/libs/angular.js/1.2.20/angular-cookies.min.js"></script>
     <script src="//cdnjs.cloudflare.com/ajax/libs/angular.js/1.2.20/angular-sanitize.min.js"></script>
     <script src="//cdnjs.cloudflare.com/ajax/libs/angular-ui-bootstrap/0.11.2/ui-bootstrap.min.js"></script>
     <script src="//cdnjs.cloudflare.com/ajax/libs/angular-ui-bootstrap/0.11.2/ui-bootstrap-tpls.min.js"></script>
     <script src="javascripts/app.js"></script>
-  <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
-      <script type="text/javascript" src="js/materialize.min.js"></script>
-      <script src="javascripts/site.js"></script>
+    <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+    <script type="text/javascript" src="js/materialize.min.js"></script>
+    <script type="text/javascript" src="javascripts/site.js"></script>
     <script>
     (function(i, s, o, g, r, a, m) {
         i['GoogleAnalyticsObject'] = r;
@@ -139,7 +180,7 @@
     ga('create', 'UA-56721897-1', 'auto');
     ga('send', 'pageview');
     </script>
-    
+
 </body>
 
 </html>

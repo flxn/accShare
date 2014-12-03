@@ -1,11 +1,10 @@
 body {
   background-image: url('../images/Download (1).png');
+  background-attachment: fixed;
   font-size: 1rem;
+  background: #f2f2f2;
 }
 
-.container div {
-  margin-top: 15px;
-}
 
 .tabs {
   width: 70%;
@@ -13,13 +12,22 @@ body {
   margin-right:auto;
 }
 
+.searchbox-title {
+  height: 40px;
+}
+
 .searchbox-title h4 {
-  margin-bottom: -10px;
+  float:left;
   text-align: center;
 }
 
-#search {
+.searchbox-title .btn {
+  float: right;
+}
 
+.introtext {
+  padding: 10px;
+  border-radius: 2px;
 }
 
 #url {
@@ -33,4 +41,166 @@ body {
 
 .hide-load {
   opacity: 0;
+}
+
+.indicator {
+  background-color: #f06292;
+}
+
+.accountcard {
+  float:left;
+  width:45%;
+  min-width:250px;
+  min-height:150px;
+  margin-bottom:25px;
+  margin-left: 3%;
+  margin-right: 2%;
+}
+
+
+.centered {
+position:fixed;
+top:50%;
+left:50%;
+transform:translate(-50%,-50%);
+-webkit-transform:translate(-50%,-50%);
+-moz-transform:translate(-50%,-50%);
+z-index:1000;
+margin:0!important;
+}
+
+.accountcard .card-content {
+}
+
+.accountcard .card-footer {
+  margin-bottom: 0;
+}
+
+
+.accountcard .card-content {
+border-top-left-radius:2px;
+border-top-right-radius:2px;
+position:relative;
+left:0;
+top:0;
+height:63px;
+}
+
+.accountcard .card-content .site {
+  margin-top : -10px;
+}
+
+.accountcard .card-content .added {
+margin-top: -25px;
+}
+
+.accountcard .card-content .downvotes {
+position:absolute;
+top:10px;
+right:10px;
+color:#FFF;
+line-height:16px;
+margin-left:60px;
+font-weight:700;
+padding:2px;
+}
+
+.icon-downvote {
+  opacity: .9;
+  cursor: pointer;
+}
+
+.icon-downvote:hover {
+  opacity: 1;
+}
+
+.details {
+  display: inline-block;
+  margin-top: 5px;
+  margin-bottom: 5px;
+}
+
+.details input {
+  float: right;
+  width: 90%;
+  height: 2rem;
+  font-size: 1.3rem;
+  margin-bottom: 0px;
+  padding: 0;
+}
+
+.details i {
+  font-size: 1.3rem;
+}
+
+.op-0 {
+opacity:1;
+}
+
+.op-1 {
+opacity:.9;
+}
+
+.op-2 {
+opacity:.8;
+}
+
+.op-3,.op-4,.op-5 {
+opacity:.7;
+}
+
+.op-6,.op-7 {
+opacity:.6;
+}
+
+.op-8,.op-9 {
+opacity:.5;
+}
+
+.op-10,.op-11 {
+opacity:.4;
+}
+
+.op-12,.op-13 {
+opacity:.3;
+}
+
+.op-14,.op-15 {
+opacity:.2;
+}
+
+.op-16,.op-17,.op-18,.op-19 {
+opacity:.1;
+}
+
+.op-20 {
+display:none;
+}
+/* make keyframes that tell the start state and the end state of our object */
+@-webkit-keyframes fadeIn { from { opacity:0; } to { opacity:1; } }
+@-moz-keyframes fadeIn { from { opacity:0; } to { opacity:1; } }
+@keyframes fadeIn { from { opacity:0; } to { opacity:1; } }
+
+.fade-in {
+  opacity:0;  /* make things invisible upon start */
+  -webkit-animation:fadeIn ease-in 1;  /* call our keyframe named fadeIn, use animattion ease-in and repeat it only 1 time */
+  -moz-animation:fadeIn ease-in 1;
+  animation:fadeIn ease-in 1;
+
+  -webkit-animation-fill-mode:forwards;  /* this makes sure that after animation is done we remain at the last keyframe value (opacity: 1)*/
+  -moz-animation-fill-mode:forwards;
+  animation-fill-mode:forwards;
+
+  -webkit-animation-duration:0.3s;
+  -moz-animation-duration:0.3s;
+  animation-duration:0.3s;
+}
+
+#addnew input{
+  font-size: 1.7rem;
+  margin-top: 15px;
+}
+
+#addnew label {
+  margin-top: 10px;
 }

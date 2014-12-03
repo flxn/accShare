@@ -10,11 +10,7 @@ namespace.controller('MainCtrl', ['$scope', '$http', '$cookies', function($scope
     var searchString = getUnifiedUrl(site);
     $http.get('/api/accounts/' + searchString).success(function(data) {
       if (data.length == 0)
-        $scope.alert = {
-          msg: "No results found.",
-          type: "warning"
-        };
-
+        toast('No results found.', 3000);
       for (var i in data) {
         data[i].added = new Date(data[i].added).toDateString();
       }
@@ -28,16 +24,12 @@ namespace.controller('MainCtrl', ['$scope', '$http', '$cookies', function($scope
     $http.post('/api/accounts/downvote', {
       id: id
     }).success(function(data) {
-      $scope.alert = {
-        msg: data.message,
-        type: data.status
-      };
+      toast(data.message, 3000);
     });
   };
 
   $scope.addAccount = function(site, username, password) {
     $scope.showLoader = true;
-    var msg = "Required fields are missing: ";
     var missing = false;
     if (!site) {
       document.querySelector('.siteinput').style.borderBottomColor = "#FF5722";
@@ -66,10 +58,8 @@ namespace.controller('MainCtrl', ['$scope', '$http', '$cookies', function($scope
       password: password
     }).success(function(data) {
       $scope.getAccounts(data.site);
-      $scope.alert = {
-        msg: data.message,
-        type: data.status
-      };
+      toast('Required fields are missing.', 3000);
+
       $scope.hideForm();
       $scope.showLoader = false;
     });

@@ -1,6 +1,7 @@
 $(document).ready(function(){
   $('ul.tabs').tabs();
   $(".button-collapse").sideNav();
+  $(".modal-trigger").leanModal();
   window.scrollTo(0, 0);
   var matches = document.querySelectorAll('.hide-load');
 
