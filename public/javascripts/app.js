@@ -135,7 +135,7 @@ namespace.controller('MainCtrl', ['$scope', '$http', '$cookies', function($scope
   if(url){
     var parts = url.split('accshare.net/')
     if(parts[1] != ""){
-      $scope.getAccounts(parts[1]);
+      $scope.getAccounts(parts[1].split('/')[0]);
     }
   }
   
