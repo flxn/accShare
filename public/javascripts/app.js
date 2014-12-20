@@ -32,7 +32,7 @@ namespace.controller('MainCtrl', ['$scope', '$http', '$cookies', function($scope
   $scope.getAccounts = function(site) {
     resetModalInputs();
     var searchString = getUnifiedUrl(site);
-    $scope.currentSite = site;
+    $scope.currentSite = searchString;
     $http.get('/api/accounts/' + searchString).success(function(data) {
       if (data.length == 0)
         toast('No results found.', 3000);
