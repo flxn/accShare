@@ -34,13 +34,17 @@ namespace.controller('MainCtrl', ['$scope', '$http', '$cookies', function($scope
     var searchString = getUnifiedUrl(site);
     $scope.currentSite = searchString;
     $http.get('/api/accounts/' + searchString).success(function(data) {
-      if (data.length == 0)
+      if (data.length == 0) {
         toast('No results found.', 3000);
-      for (var i in data) {
-        data[i].added = new Date(data[i].added).toDateString();
-      }
+      }else{
+        for (var i in data) {
+          data[i].added = new Date(data[i].added).toDateString();
+        }
 
-      $scope.accounts = data;
+        $scope.accounts = data;
+        window.history.pushState(searchString, 'Results for ' + searchString, '/' + searchString);
+      }
+      
       document.querySelector('.searchbox').blur();
     });
   };
@@ -134,7 +138,7 @@ namespace.controller('MainCtrl', ['$scope', '$http', '$cookies', function($scope
   var url = document.URL;
   if(url){
     var parts = url.split('accshare.net/')
-    if(parts[1] != ""){
+    if(parts[1] && parts[1] != ""){
       $scope.getAccounts(parts[1].split('/')[0]);
     }
   }
