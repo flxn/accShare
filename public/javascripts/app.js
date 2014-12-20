@@ -136,7 +136,7 @@ namespace.controller('MainCtrl', ['$scope', '$http', '$cookies', function($scope
     var parts = url.split('/');
     var search = parts[parts.length -1];
     if(search != ""){
-      getAccounts(search);
+      $scope.getAccounts(search);
     }
   }
   
