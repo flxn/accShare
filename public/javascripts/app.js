@@ -1,13 +1,38 @@
 var namespace = angular.module('accShare', ['ngCookies', 'ngSanitize']);
 
 var getUnifiedUrl = function(url) {
-  var temp = url.replace("http://", '').replace("https://", '').replace("www.", '');
+  if(url) {
+    var temp = url.replace("http://", '').replace("https://", '').replace("www.", '');
     return temp.split('?')[0].split('/')[0];
+
+  }else{
+    return false;
+  }
+}
+
+var close_modal = function(modal_id){
+      $(".lean_overlay").velocity( { opacity: 0}, {duration: 200, queue: false, ease: 'easeOutQuart'});
+      $(modal_id).fadeOut(200, function() {
+          $(this).css({ "top": 0 });
+          $(".lean_overlay").css({"display":'none'});
+      });
+
+}
+
+var resetModalInputs = function() {
+  document.querySelector('#newurl').style.borderBottomColor = "";
+  document.querySelector('#newuser').style.borderBottomColor = "";
+  document.querySelector('#newpassword').style.borderBottomColor = "";
+  document.querySelector('#newurl').value = "";
+  document.querySelector('#newuser').value = "";
+  document.querySelector('#newpassword').value = "";
 }
 
 namespace.controller('MainCtrl', ['$scope', '$http', '$cookies', function($scope, $http, $cookies) {
   $scope.getAccounts = function(site) {
+    resetModalInputs();
     var searchString = getUnifiedUrl(site);
+    $scope.currentSite = site;
     $http.get('/api/accounts/' + searchString).success(function(data) {
       if (data.length == 0)
         toast('No results found.', 3000);
@@ -32,18 +57,17 @@ namespace.controller('MainCtrl', ['$scope', '$http', '$cookies', function($scope
     $scope.showLoader = true;
     var missing = false;
     if (!site) {
-      document.querySelector('.siteinput').style.borderBottomColor = "#FF5722";
+      document.querySelector('#newurl').style.borderBottomColor = "#FF5722";
       missing = true;
     }
     if (!username) {
-      document.querySelector('.userinput').style.borderBottomColor = "#FF5722";
+      document.querySelector('#newuser').style.borderBottomColor = "#FF5722";
       missing = true;
 
     }
     if (!password) {
-      document.querySelector('.passwordinput').style.borderBottomColor = "#FF5722";
+      document.querySelector('#newpassword').style.borderBottomColor = "#FF5722";
       missing = true;
-
     }
 
     if(missing){
@@ -51,15 +75,16 @@ namespace.controller('MainCtrl', ['$scope', '$http', '$cookies', function($scope
         return;
     }
 
-
     $http.post('/api/accounts/add', {
       site: site,
       user: username,
       password: password
     }).success(function(data) {
       $scope.getAccounts(data.site);
-      toast('Required fields are missing.', 3000);
-
+      close_modal("#addnew");
+      toast('Account added', 3000);
+      resetModalInputs();
+      
       $scope.hideForm();
       $scope.showLoader = false;
     });
@@ -101,11 +126,18 @@ namespace.controller('MainCtrl', ['$scope', '$http', '$cookies', function($scope
   }
 
   $scope.currentDate = new Date().toDateString();
-  $scope.getCount();
 
   if ($cookies.agreedToTermsOfUse != 1) {
     $scope.showTermsOfUse = true;
   }
 
-
+  var url = document.URL;
+  if(url){
+    var parts = url.split('/');
+    var search = parts[parts.length -1];
+    if(search != ""){
+      getAccounts(search);
+    }
+  }
+  
 }]);

@@ -8,7 +8,7 @@
     <meta name="keywords" content="account, sharing, logins, privacy, registration" />
     <meta name="language" content="en" />
     <meta name="description" content="No more annoying registrations! Share accounts and fight for more online privacy and a free internet. Help to improve the web on AccShare.net" />
-    <link rel="stylesheet" href="css/materialize.min.css" />
+    <link rel="stylesheet" href="css/materialize.css" />
     <link rel="stylesheet" href="stylesheets/style.css">
 
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
@@ -26,7 +26,7 @@
     <link rel="icon" type="image/png" href="/favicon-96x96.png" sizes="96x96">
     <link rel="icon" type="image/png" href="/favicon-16x16.png" sizes="16x16">
     <link rel="icon" type="image/png" href="/favicon-32x32.png" sizes="32x32">
-    <meta name="msapplication-TileColor" content="#00aba9">
+    <meta name="msapplication-TileColor" content="#3f51b5">
     <meta name="msapplication-TileImage" content="/mstile-144x144.png">
 </head>
 
@@ -36,10 +36,8 @@
             <a href="#" class="brand-logo">AccShare</a>
             
             <ul id="nav-mobile" class="right side-nav">
-
-                <li><a href="#search">Search</a>
-                </li>
-                <li><a href="#about">About</a>
+                <li><a href="#shareModal" class="modal-trigger"><i class="mdi-social-share"></i> <span class="hide-on-large-only">Share</span></a></li>
+                <li><a href="http://google.com" target="_blank"><i class="mdi-action-extension"></i> <span class="hide-on-large-only">Get the Extension</span></a>
                 </li>
             </ul>
             <a class="button-collapse" href="#" data-activates="nav-mobile"><i class="mdi-navigation-menu"></i></a>
@@ -65,11 +63,11 @@
                     <div class="card-content white-text searchbox-title">
                         <h4>Search for a site</h4>
                         <a href="#addnew" class="btn waves-effect waves-light modal-trigger pink lighten-2 hide-on-small-and-down"><i class="mdi-content-add"></i>Add new</a>
-                        <a href="#addnew" class="btn waves-effect waves-light modal-trigger pink lighten-2 hide-on-med-and-up"><i class="mdi-content-add"></i>Add</a>
+                        <a href="#addnew" class="btn waves-effect waves-light modal-trigger pink lighten-2 hide-on-med-and-up">Add</a>
                     </div>
                     <div class="card-footer">
                         <div class="input-field col s12">
-                            <input id="url" class="searchbox" type="text" placeholder="URL / Name" ng-model="searchString" ng-bind-html="searchString" ng-keyup="clearAlert(); $event.keyCode == 13 && getAccounts(searchString)" required>
+                            <input id="url" class="searchbox" type="text" placeholder="URL / Name" ng-model="searchString" ng-bind-html="searchString" ng-keyup="clearAlert(); $event.keyCode == 13 && getAccounts(searchString)" value="{{currentSite}}" required>
                         </div>
                     </div>
                 </div>
@@ -141,28 +139,44 @@
     <div id="addnew" class="modal">
       <h4>Add a new site</h4>
       <div class="input-field col s12">
-          <input id="newurl" class="" type="text" required>
-          <label for="newurl">URL / Name</label>
+          <input id="newurl" class="" type="text" placeholder="URL / Name" ng-model="url" ng-bind-html="url" value="123" required>
+          <!--<label for="newurl">URL / Name</label>-->
       </div>
       <div class="input-field col s12">
-          <input id="newuser" class="" type="text" required>
-          <label for="newuser">Username</label>
+          <input id="newuser" class="" type="text" placeholder="Username" ng-model="username" ng-bind-html="username" required>
+          <!--<label for="newuser">Username</label>-->
       </div>
       <div class="input-field col s12">
-          <input id="newpassword" class="" type="text" required>
-          <label for="newpassword">Password</label>
+          <input id="newpassword" class="" type="text" placeholder="Password" ng-model="password" ng-bind-html="password" required>
+          <!--<label for="newpassword">Password</label>-->
       </div>
-      <a href="" class="waves-effect btn flat modal_close">Add</a>
+      <a href="" class="waves-effect btn flat" ng-click="addAccount(url, username, password)">Add</a>
+    </div>
+
+    <div id="shareModal" class="modal">
+      <h4>Share</h4>
+      <p>
+        AccShare relies on a great community. Help us by showing it to your friends.
+      </p>
+        <a href="https://www.facebook.com/sharer/sharer.php?u=http://accshare.net" class="waves-effect btn indigo darken-1" target="_blank">FACEBOOK</a>
+      
+      
+        <a href="https://twitter.com/home?status=Check%20out%20AccShare...%20It's%20awesome:%0Ahttp://accshare.net" class="waves-effect btn blue" target="_blank">TWITTER</a>
+      
+      
+        <a href="https://plus.google.com/share?url=http://accshare.net" class="waves-effect btn red" target="_blank">GOOGLE PLUS</a>
+      
+      
+        <a href="https://www.linkedin.com/shareArticle?mini=true&url=http://accshare.net/&title=AccShare&summary=No%20more%20annoying%20registrations!%20Share%20accounts%20and%20fight%20for%20more%20online%20privacy%20and%20a%20free%20internet.&source=http://accshare.net/" class="waves-effect btn blue darken-1" target="_blank">LINKEDIN</a>
+      
     </div>
 
     <script src="//cdnjs.cloudflare.com/ajax/libs/angular.js/1.2.20/angular.min.js"></script>
     <script src="//cdnjs.cloudflare.com/ajax/libs/angular.js/1.2.20/angular-cookies.min.js"></script>
     <script src="//cdnjs.cloudflare.com/ajax/libs/angular.js/1.2.20/angular-sanitize.min.js"></script>
-    <script src="//cdnjs.cloudflare.com/ajax/libs/angular-ui-bootstrap/0.11.2/ui-bootstrap.min.js"></script>
-    <script src="//cdnjs.cloudflare.com/ajax/libs/angular-ui-bootstrap/0.11.2/ui-bootstrap-tpls.min.js"></script>
     <script src="javascripts/app.js"></script>
     <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
-    <script type="text/javascript" src="js/materialize.min.js"></script>
+    <script type="text/javascript" src="js/materialize.js"></script>
     <script type="text/javascript" src="javascripts/site.js"></script>
     <script>
     (function(i, s, o, g, r, a, m) {
@@ -180,7 +194,7 @@
     ga('create', 'UA-56721897-1', 'auto');
     ga('send', 'pageview');
     </script>
-
+    
 </body>
 
 </html>

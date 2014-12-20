@@ -335,7 +335,7 @@ jQuery.extend( jQuery.easing,
                 overlay: 0.7
             }
             
-            var overlay = $("<div id='lean_overlay'></div>");
+            var overlay = $("<div class='lean_overlay'></div>");
             $("body").append(overlay);
             options =  $.extend(defaults, options);
             return this.each(function() {
@@ -343,7 +343,7 @@ jQuery.extend( jQuery.easing,
                 var o = options;
                 $(this).click(function(e) {
               	var modal_id = $(this).attr("href");
-				$("#lean_overlay").click(function() { 
+				$(".lean_overlay").click(function() { 
                      close_modal(modal_id);                    
                 });
                 
@@ -352,9 +352,9 @@ jQuery.extend( jQuery.easing,
                     close_modal(modal_id);            
                 });
                   
-        		$('#lean_overlay').css({ 'display' : 'block', opacity : 0 });
+        		$('.lean_overlay').css({ 'display' : 'block', opacity : 0 });
                   
-        		$('#lean_overlay').velocity({opacity: o.overlay}, {duration: 350, queue: false, ease: 'easeOutQuart'});
+        		$('.lean_overlay').velocity({opacity: o.overlay}, {duration: 350, queue: false, ease: 'easeOutQuart'});
 //                
 //                var modal_height = $(modal_id).outerHeight();
 //        	  	var modal_width = $(modal_id).outerWidth();
@@ -377,10 +377,10 @@ jQuery.extend( jQuery.easing,
             });
 
 			function close_modal(modal_id){
-        		$("#lean_overlay").velocity( { opacity: 0}, {duration: 200, queue: false, ease: 'easeOutQuart'});
+        		$(".lean_overlay").velocity( { opacity: 0}, {duration: 200, queue: false, ease: 'easeOutQuart'});
                 $(modal_id).fadeOut(200, function() {
                     $(this).css({ "top": 0 });
-                    $("#lean_overlay").css({"display":'none'});
+                    $(".lean_overlay").css({"display":'none'});
                 });
 			
 			}
