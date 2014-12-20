@@ -133,10 +133,9 @@ namespace.controller('MainCtrl', ['$scope', '$http', '$cookies', function($scope
 
   var url = document.URL;
   if(url){
-    var parts = url.split('/');
-    var search = parts[parts.length -1];
-    if(search != ""){
-      $scope.getAccounts(search);
+    var parts = url.split('accshare.net/')
+    if(parts[1] != ""){
+      $scope.getAccounts(parts[1]);
     }
   }
   
