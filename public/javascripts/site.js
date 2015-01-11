@@ -1,5 +1,5 @@
 $(document).ready(function(){
-  $('ul.tabs').tabs();
+  //$('ul.tabs').tabs();
   $(".button-collapse").sideNav();
   $(".modal-trigger").leanModal();
 

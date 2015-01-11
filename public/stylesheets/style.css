@@ -1,11 +1,14 @@
 body {
   background-image: url('../images/Download (1).png');
   background-attachment: fixed;
-  font-size: 1rem;
   background: #f2f2f2;
   overflow-x: hidden;
 }
 
+h2 {
+  font-size: 2.3rem;
+  font-style: italic;
+}
 
 .tabs {
   width: 70%;
@@ -13,7 +16,7 @@ body {
   margin-right:auto;
 }
 .text-shadow {
-  text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
+  text-shadow: 2px 2px 6px rgba(0,0,0,0.2);
 }
 
 .searchbox-title {

@@ -44,7 +44,8 @@
             
         </div>
     </nav>
-    <div class="row white z-depth-1">
+  <!--
+    <div class="row indigo z-depth-1">
         <div class="container">
             <ul class="tabs" style="width: 100%; margin-left: auto; margin-right: auto;">
                 <li class="tab white" style="max-width: 50% !important; width: 50% !important;"><a href="#search" class="active black-text">Search</a>
@@ -54,7 +55,7 @@
             </ul>
         </div>
     </div>
-
+-->
     <!-- main page content -->
     <div id="search" class="section">
         <div class="container">
@@ -82,7 +83,7 @@
                     <div class="card accountcard op-{{account.downvotes}} z-depth-1 fade-in" ng-repeat="account in accounts">
 
                         <div class="card-content white-text pink lighten-2">
-                            <div class="site"><h1>{{account.site}}</h1></div>
+                            <div class="site text-shadow"><h1>{{account.site}}</h1></div>
                             <div class="added"><h3>{{account.added}}</h3></div>
                             <div class="downvotes dvcolor-{{account.downvotes}}">
                                 {{account.downvotes}}
@@ -110,26 +111,36 @@
 
     <!-- About Section -->
     <div id="about">
-        <div class="section lime-green ighten-2">
-            <div class="container grey-text darken-3">
-                <h1>About AccShare</h1>
-            </div>
-        </div>
         <div class="section white z-depth-1">
             <div class="container">
-                <h2>What?</h2>
-                <p>AccShare is a platform for sharing login credentials.</p>
-                <h2>Why?</h2>
-                <p>Everyone has probably encountered this situation:
+                <h1>FAQ</h1>
+                <br>
+                <h2>What is AccShare?</h2>
+                <p class="flow-text">AccShare is a platform for sharing login credentials.</p>
+                <h2>Why should i use it?</h2>
+                <p class="flow-text">Everyone has probably encountered this situation:
                     <br /> You browse the web and stumble upon a site you want to test or that has content you want to access that is free but you have to create an account first to use it. This means you have to give out your email and name even if you are not sure wether you will use the site for more than 5 minutes.
-                    <br />With AccShare you can avoid this unnecessary hurdle and just log in with a shared account
+                    <br />With AccShare you can avoid this unnecessary hurdle and just log in with a shared account.
                     <br />
                     <strong>Less hassle. More privacy.</strong>
                 </p>
+                <h2>Is it free?</h2>
+                <p class="flow-text">Yes, absolutely. But you can donate if you want to support me.</p><form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
+<input type="hidden" name="cmd" value="_s-xclick">
+<input type="hidden" name="hosted_button_id" value="AYNNLSM6CQ7PL">
+<input type="image" src="https://www.paypalobjects.com/en_US/i/btn/btn_donate_LG.gif" border="0" name="submit" alt="PayPal - The safer, easier way to pay online!">
+<img alt="" border="0" src="https://www.paypalobjects.com/de_DE/i/scr/pixel.gif" width="1" height="1">
+</form><br>
                 <h2>How does it work?</h2>
-                <p>AccShare is completely community-driven. Users create Fake-Accounts for sites and add them to our database to help others. The more people participate the more sites can be added.</p>
-                <h1>Privacy</h1>
-                <p>Of course you do not have to register to use this site, this means no personal information is stored. Furthemore no IPs are logged by the webserver and no UUIDs are generated to track users. The site is just using Google Analytics for general statistics but feel free to block it in your browser with a plugin like Ghostery.</p>
+                <p class="flow-text">AccShare is completely community-driven. Users create Fake-Accounts for sites and add them to our database to help others. The more people participate the more sites can be added.</p>
+                <h2>Do I always have to visit this page to use it?</h2>
+                <p class="flow-text">Nope. There is a browser extension for Google Chrome that shows you existing logins for your current tab.<br>Check it out on the Chrome Web Store.</p>
+                <h2>But then you can track every page I'm visiting!</h2>
+                <p class="flow-text">
+                    Again No. There is no ID that can identify a single user and only the domain name of the current url is sent to our server. We also do not store any IPs so for AccShare you are completely anonymous (We use Google Analytics though but only for the website...).<br>
+                    Example:<br>
+                    <code>When you visit "http://example.com/a-random-embarassing-page.html" we only see that someone requested credentials for "example.com".</code>
+                </p>
             </div>
         </div>
     </div>
@@ -162,8 +173,7 @@
       
       
         <a href="https://twitter.com/home?status=Check%20out%20AccShare...%20It's%20awesome:%0Ahttp://accshare.net" class="waves-effect btn blue" target="_blank">TWITTER</a>
-      
-      
+
         <a href="https://plus.google.com/share?url=http://accshare.net" class="waves-effect btn red" target="_blank">GOOGLE PLUS</a>
       
       
