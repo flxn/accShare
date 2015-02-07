@@ -35,7 +35,7 @@ namespace.controller('MainCtrl', ['$scope', '$http', '$cookies', function($scope
     $scope.currentSite = searchString;
     $http.get('/api/accounts/' + searchString).success(function(data) {
       if (data.length == 0) {
-        toast('No results found.', 3000);
+        toast('No results found.', 1000);
       }else{
         for (var i in data) {
           data[i].added = new Date(data[i].added).toDateString();
@@ -45,7 +45,7 @@ namespace.controller('MainCtrl', ['$scope', '$http', '$cookies', function($scope
         window.history.pushState(searchString, 'Results for ' + searchString, '/' + searchString);
       }
       
-      document.querySelector('.searchbox').blur();
+      //document.querySelector('.searchbox').blur();
     });
   };
 
@@ -93,7 +93,7 @@ namespace.controller('MainCtrl', ['$scope', '$http', '$cookies', function($scope
       $scope.showLoader = false;
     });
 
-
+    $('#addnew').closeModal();
   };
 
   $scope.getCount = function() {

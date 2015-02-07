@@ -62,13 +62,13 @@
             <div class="col l10 m10 s12 offset-l1 offset-m1">
                 <div class="card indigo fade-in">
                     <div class="card-content white-text searchbox-title">
-                        <h4 class="text-shadow">Search for a site</h4>
-                        <a href="#addnew" class="btn waves-effect waves-light modal-trigger pink lighten-2 hide-on-small-and-down"><i class="mdi-content-add"></i>Add new</a>
-                        <a href="#addnew" class="btn waves-effect waves-light modal-trigger pink lighten-2 hide-on-med-and-up">Add</a>
+                        <span class="text-shadow card-title">Search for a site</span>
+                        <a href="#addnew" class="btn waves-effect waves-light modal-trigger white-text pink lighten-2 hide-on-small-and-down"><i class="mdi-content-add"></i>Add new</a>
+                        <a href="#addnew" class="btn waves-effect waves-light modal-trigger white-text pink lighten-2 hide-on-med-and-up">Add</a>
                     </div>
-                    <div class="card-footer">
+                    <div class="card-action white">
                         <div class="input-field col s12">
-                            <input id="url" class="searchbox" type="text" placeholder="URL / Name" ng-model="searchString" ng-bind-html="searchString" ng-keyup="clearAlert(); $event.keyCode == 13 && getAccounts(searchString)" value="{{currentSite}}" required>
+                            <input id="url" class="searchbox" type="text" placeholder="URL / Name" ng-model="searchString" ng-bind-html="searchString" ng-keyup="clearAlert(); $event.keyCode == 13 && getAccounts(searchString)" value="{{currentSite}}">
                         </div>
                     </div>
                 </div>
@@ -83,14 +83,14 @@
                     <div class="card accountcard op-{{account.downvotes}} z-depth-1 fade-in" ng-repeat="account in accounts">
 
                         <div class="card-content white-text pink lighten-2">
-                            <div class="site text-shadow"><h1>{{account.site}}</h1></div>
-                            <div class="added"><h3>{{account.added}}</h3></div>
+                            <div class="card-title site text-shadow"><span>{{account.site}}</span></div>
+                            <div class="added"><span>{{account.added}}</span></div>
                             <div class="downvotes dvcolor-{{account.downvotes}}">
                                 {{account.downvotes}}
                                 <span class="mdi-action-thumb-down icon-downvote text-white" ng-click="downvote(account._id); getAccounts(searchString);" tooltip="Downvote this account."></span>
                             </div>
                         </div>
-                        <div class="card-footer">
+                        <div class="card-action">
                             <div class="details">
                                 <i class="mdi-social-person"></i>
                                 <input id="input-user" type="text" class="user" value="{{account.user}}" onclick="this.select()" readonly>
@@ -125,7 +125,7 @@
                     <strong>Less hassle. More privacy.</strong>
                 </p>
                 <h2>Is it free?</h2>
-                <p class="flow-text">Yes, absolutely. But you can donate if you want to support me.</p><form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
+                <p class="flow-text">Yes, absolutely. But you can donate if you want to support the site.</p><form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
 <input type="hidden" name="cmd" value="_s-xclick">
 <input type="hidden" name="hosted_button_id" value="AYNNLSM6CQ7PL">
 <input type="image" src="https://www.paypalobjects.com/en_US/i/btn/btn_donate_LG.gif" border="0" name="submit" alt="PayPal - The safer, easier way to pay online!">
@@ -184,7 +184,7 @@
     <script src="//cdnjs.cloudflare.com/ajax/libs/angular.js/1.2.20/angular.min.js"></script>
     <script src="//cdnjs.cloudflare.com/ajax/libs/angular.js/1.2.20/angular-cookies.min.js"></script>
     <script src="//cdnjs.cloudflare.com/ajax/libs/angular.js/1.2.20/angular-sanitize.min.js"></script>
-    <script src="javascripts/app.js"></script>
+    <script type="text/javascript" src="javascripts/app.js"></script>
     <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
     <script type="text/javascript" src="js/materialize.js"></script>
     <script type="text/javascript" src="javascripts/site.js"></script>

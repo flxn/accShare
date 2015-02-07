@@ -20,6 +20,32 @@ router.get('/getCount', function(req, res) {
     });
 });
 
+router.get('/autositemap', function(req, res) {
+    Account.find({}).select("site").exec(function(err, data) {
+        var urls = [];
+        for (var i = data.length - 1; i >= 0; i--) {
+            if(urls.indexOf(data[i].site) == -1) {
+                urls.push(data[i].site);
+            }
+        };
+        
+        var urlxml = '';
+        for (var i = urls.length - 1; i >= 0; i--) {
+            urlxml += '<url><loc>https://accshare.net/' + urls[i] + '</loc></url>';
+        };
+        var xml = '<?xml version="1.0" encoding="UTF-8"?>\
+        <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\
+            <url><loc>https://accshare.net/</loc></url>\
+                ' + urlxml + '\
+        </urlset>';
+
+        res.type("text/xml");
+        res.send(xml);
+    });
+
+    
+});
+
 router.get('/:site', function(req, res) {
     Account.find({ site: new RegExp(req.params.site, "i") }).sort({ downvotes: 'asc', added: 'desc' }).limit(20).exec(function(err, accounts) {
         if(err)

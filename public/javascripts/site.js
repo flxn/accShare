@@ -2,7 +2,6 @@ $(document).ready(function(){
   //$('ul.tabs').tabs();
   $(".button-collapse").sideNav();
   $(".modal-trigger").leanModal();
-
   $('.tooltipped').tooltip({"delay": 50});
   window.scrollTo(0, 0);
   var matches = document.querySelectorAll('.hide-load');
@@ -14,6 +13,12 @@ $(document).ready(function(){
     }
       
   }
+
+  $('#url').keyup(function() {
+    if($('#url').val().length > 2){
+      angular.element(document.getElementById('url')).scope().getAccounts($('#url').val());
+    }
+  });
 });
 
 
